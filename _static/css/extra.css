@@ -446,3 +446,16 @@ mjx-container > img {
 [data-md-component="toc"] {
     display: none !important;
 }
+
+/* Additional TOC hiding rules */
+.md-nav--secondary,
+.md-nav__item--nested .md-nav,
+.md-content__inner > .md-nav {
+    display: none !important;
+}
+
+/* Hide any TOC related elements */
+nav[data-md-component="toc"],
+.md-nav[data-md-component="toc"] {
+    display: none !important;
+}
