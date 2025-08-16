@@ -1,0 +1,1715 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <link rel="dns-prefetch" href="//oi-wiki.org">
+      <link rel="dns-prefetch" href="//search.oi-wiki.org">
+      <link rel="dns-prefetch" href="//api.github.com">
+      <link rel="dns-prefetch" href="//www.google-analytics.com">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hendricks's site">
+      
+      
+        <meta name="author" content="Hendrick">
+      
+      
+        <link rel="canonical" href="https://yooheng416.com/papers/model_merging/SMILE/">
+      
+      
+        <link rel="prev" href="../sequence/">
+      
+      
+        <link rel="next" href="../../../other/">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>SMILE - Hendrick's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f5281797.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CJetbrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Jetbrains Mono"}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=14">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Hendrick&#39;s Homepage" class="md-header__button md-logo" aria-label="Hendrick's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M4.22 4.22C5.65 2.79 8.75 3.43 12 5.56c3.25-2.13 6.35-2.77 7.78-1.34 1.43 1.43.79 4.53-1.34 7.78 2.13 3.25 2.77 6.35 1.34 7.78-1.43 1.43-4.53.79-7.78-1.34-3.25 2.13-6.35 2.77-7.78 1.34-1.43-1.43-.79-4.53 1.34-7.78-2.13-3.25-2.77-6.35-1.34-7.78m11.32 4.24c.61.62 1.17 1.25 1.69 1.88 1.38-2.13 1.88-3.96 1.13-4.7-.74-.75-2.57-.25-4.7 1.13.63.52 1.26 1.08 1.88 1.69m-7.08 7.08c-.61-.62-1.17-1.25-1.69-1.88-1.38 2.13-1.88 3.96-1.13 4.7.74.75 2.57.25 4.7-1.13-.63-.52-1.26-1.08-1.88-1.69m-2.82-9.9c-.75.74-.25 2.57 1.13 4.7.52-.63 1.08-1.26 1.69-1.88.62-.61 1.25-1.17 1.88-1.69-2.13-1.38-3.96-1.88-4.7-1.13m4.24 8.48c.7.7 1.42 1.34 2.12 1.91.7-.57 1.42-1.21 2.12-1.91.7-.7 1.34-1.42 1.91-2.12-.57-.7-1.21-1.42-1.91-2.12-.7-.7-1.42-1.34-2.12-1.91-.7.57-1.42 1.21-2.12 1.91-.7.7-1.34 1.42-1.91 2.12.57.7 1.21 1.42 1.91 2.12m8.48 4.24c.75-.74.25-2.57-1.13-4.7-.52.63-1.08 1.26-1.69 1.88-.62.61-1.25 1.17-1.88 1.69 2.13 1.38 3.96 1.88 4.7 1.13Z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hendrick's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SMILE
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  About me
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NLP/Stanford%20CS224n%20Lecture-1/" class="md-tabs__link">
+          
+  
+  Courses
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../transformer/paper/" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../other/" class="md-tabs__link">
+        
+  
+    
+  
+  Others
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hendrick&#39;s Homepage" class="md-nav__button md-logo" aria-label="Hendrick's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M4.22 4.22C5.65 2.79 8.75 3.43 12 5.56c3.25-2.13 6.35-2.77 7.78-1.34 1.43 1.43.79 4.53-1.34 7.78 2.13 3.25 2.77 6.35 1.34 7.78-1.43 1.43-4.53.79-7.78-1.34-3.25 2.13-6.35 2.77-7.78 1.34-1.43-1.43-.79-4.53 1.34-7.78-2.13-3.25-2.77-6.35-1.34-7.78m11.32 4.24c.61.62 1.17 1.25 1.69 1.88 1.38-2.13 1.88-3.96 1.13-4.7-.74-.75-2.57-.25-4.7 1.13.63.52 1.26 1.08 1.88 1.69m-7.08 7.08c-.61-.62-1.17-1.25-1.69-1.88-1.38 2.13-1.88 3.96-1.13 4.7.74.75 2.57.25 4.7-1.13-.63-.52-1.26-1.08-1.88-1.69m-2.82-9.9c-.75.74-.25 2.57 1.13 4.7.52-.63 1.08-1.26 1.69-1.88.62-.61 1.25-1.17 1.88-1.69-2.13-1.38-3.96-1.88-4.7-1.13m4.24 8.48c.7.7 1.42 1.34 2.12 1.91.7-.57 1.42-1.21 2.12-1.91.7-.7 1.34-1.42 1.91-2.12-.57-.7-1.21-1.42-1.91-2.12-.7-.7-1.42-1.34-2.12-1.91-.7.57-1.42 1.21-2.12 1.91-.7.7-1.34 1.42-1.91 2.12.57.7 1.21 1.42 1.91 2.12m8.48 4.24c.75-.74.25-2.57-1.13-4.7-.52.63-1.08 1.26-1.69 1.88-.62.61-1.25 1.17-1.88 1.69 2.13 1.38 3.96 1.88 4.7 1.13Z"></path></svg>
+
+    </a>
+    Hendrick's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Courses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂谈
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            杂谈
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/Stanford%20CS224n%20Lecture-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Word2Vec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    感知机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP/%E6%97%A0%E6%B3%95%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一个二级结论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NLP Final
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            NLP Final
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E8%AF%8D%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-1 词向量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-2 神经网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-3 句法分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E4%BE%9D%E5%AD%98%E5%8F%A5%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-4 依存句法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-5 语言模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-6 循环神经网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-7 机器翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/Attention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-8 Attention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NLP_final/Transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-9 Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    d2l(Mu Li)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            d2l(Mu Li)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/muli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    写在前面
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/06_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/08_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/09_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/10_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/11_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/12_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/13_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-13
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/14_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/19_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/20_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/21_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-21
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/22_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-22
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/23_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/24_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-24
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/25_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/26_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-26
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/27_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../d2l/28_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson-28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transformer/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLIP/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-attention/self-attention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Self-attention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Abstract%20Visual%20Reasoning%20with%20Tangram%20Shapes/Abstract%20Visual%20Reasoning%20with%20Tangram%20Shapes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abstract Visual Reasoning with Tangram Shapes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Factuality of Large Language Models in the Legal Domain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CORAL/paper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CORAL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Model Merging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Model Merging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    论文自梳理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SMILE
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <h1>SMILE</h1>
+  
+
+<ol>
+<li>Motivation
+在大规模数据集上训练深度模型的成本越来越高，因此，当前广泛采用模型融合技术来利用已有模型的知识：模型融合有效地提升了模型性能并加速了新模型的开发。
+然而，单个模型参数之间的潜在干扰以及融合过程缺乏可解释性仍然是当前的重大挑战。现有的方法通常通过评估参数的属性（如幅值或符号）或通过参数剪枝来解决参数干扰问题，这些方法都是依赖于启发式方法或简化假设。
+但是，我们提出了一种全新的子空间视角来理解和解决参数干扰问题：我们通过矩阵分解的子空间分析方法，将微调模型的预测分解为不同的组成部分（包括预训练知识和任务特定的适应部分），以便后续模型在适应下游任务时保留预训练知识；同时，我们进一步将参数干扰问题形式化为一个优化问题（提供了一个更严谨和可量化的视角）。
+总的来说，基于上述观察，我们提出了零样本稀疏低秩专家混合模型（SMILE）。该方法的核心思想是通过增加模型的维度，为每个任务分配独立的低秩专家（Low-rank Experts），从而在不显著增加参数量的情况下，实现多任务的灵活适应。
+通过实验，我们发现：（1）通过增加模型维度，我们能够在保持高性能的同时，显著减少模型的数量和计算成本；（2）对于使用LoRA微调的模型，仅增加2%的参数即可保持99%的个体性能；（3）我们的方法还提供了性能与模型大小之间的灵活权衡，如下图所示：较低的秩可以减少参数量，但可能会略微降低性能；而较高的秩则可以提升性能，但会增加模型的大小。
+[图片]</li>
+<li>Method
+2.1 从子空间角度重新思考模型微调
+在深入探讨所提出方法的细节之前，我们从奇异值分解（SVD）的子空间视角对微调过程进行了深入分析，我们的目标是：（1）研究并定位微调权重<span class="arithmatex">\(<span class="arithmatex">\(W_{ft}\)</span>\)</span>中的任务信息；（2）理解这些任务信息如何与预训练权重<span class="arithmatex">\(<span class="arithmatex">\(W\)</span>\)</span>相关联。
+首先，我们考虑预训练模型的一个线性层，其参数为<span class="arithmatex">\(<span class="arithmatex">\(W \in R^{m \times n}\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(b \in R^{m}\)</span>\)</span>，在下游任务上进行全微调后，权重矩阵和偏置向量分别更新为<span class="arithmatex">\(<span class="arithmatex">\(W_{ft}\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(b_{ft}\)</span>\)</span>。
+奇异值分解可以形式化为：<span class="arithmatex">\(<span class="arithmatex">\(W = U \Sigma V^T\)</span>\)</span>，其中<span class="arithmatex">\(<span class="arithmatex">\(U \in \mathbb{R}^{m \times m}\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(\Sigma \in \mathbb{R}^{m \times n}\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(V \in \mathbb{R}^{n \times n}\)</span>\)</span>：<span class="arithmatex">\(<span class="arithmatex">\(U\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(V\)</span>\)</span>是正交矩阵，分别表示左奇异向量和右奇异向量，<span class="arithmatex">\(<span class="arithmatex">\(\Sigma\)</span>\)</span>是一个对角矩阵，其对角线上的元素为奇异值，按从大到小排列。通过 SVD，我们可以将权重矩阵分解为不同重要性的子空间：较大的奇异值对应的子空间包含了权重矩阵的主要信息，而较小的奇异值对应的子空间则包含了次要信息或噪声。
+类似地，微调后的参数矩阵也可以进行奇异值分解：<span class="arithmatex">\(<span class="arithmatex">\(W_{ft} = U (\Sigma + \Delta \Sigma) V^T\)</span>\)</span>，其中<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>表示微调过程中奇异值的变化，我们可以通过分析<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>，来定位任务信息在微调权重中的位置，并理解这些信息如何与预训练权重相关联的。
+（1）较大的<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>值对应的子空间是模型在微调过程中主要调整的部分；
+（2）通过分析<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>的分布，我们可以理解任务信息如何与预训练权重相关联：例如，<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>的变化主要集中在较小的奇异值上，说明模型在微调过程中主要利用了预训练权重中较不显著的部分来适应新任务（对于这种关联的理解有助于我们理解模型在微调过程中如何保留预训练知识和适应新任务）
+下面，我们给出一个定理：给定两组正交归一化向量 <span class="arithmatex">\(<span class="arithmatex">\(\{u_i\}_{i=1}^p \subset \mathbb{R}^m\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(\{v_i\}_{i=1}^q \subset \mathbb{R}^n\)</span>\)</span>，则矩阵集合<span class="arithmatex">\(<span class="arithmatex">\(\{u_i v_j^T\}_{i=1,j=1}^{p,q}\)</span>\)</span>构成了<span class="arithmatex">\(<span class="arithmatex">\(\mathbb{R}^{m \times n}\)</span>\)</span>的一个子空间的正交归一化基，且该子空间的维度为<span class="arithmatex">\(<span class="arithmatex">\(p \times q\)</span>\)</span>（这个定理告诉我们，给定两组正交归一化向量，可以通过外积的方式构造一组正交归一化的矩阵基，用于表示或分解矩阵空间中的特定子空间）。
+根据这个定理，我们可以知道：对于任意矩阵<span class="arithmatex">\(<span class="arithmatex">\(A \in R^{m\times n}\)</span>\)</span>，都可以表示为基<span class="arithmatex">\(<span class="arithmatex">\(\{u_i v_j^T\}\)</span>\)</span>的加权和：<span class="arithmatex">\(<span class="arithmatex">\(A = \sum_{i=1}^m \sum_{j=1}^n \langle A, u_i v_j^T \rangle u_i v_j^T\)</span>\)</span>
+同时，微调后的输出<span class="arithmatex">\(<span class="arithmatex">\(y\)</span>\)</span>也可以分解为预训练部分和微调部分：<span class="arithmatex">\(<span class="arithmatex">\(y = W_{ft} x + b_{ft} = (W + \Delta W) x + (b + \Delta b) = \underbrace{W x + b}_{\text{预训练部分}} + \underbrace{\Delta W x + \Delta b}_{\text{微调部分}}.\)</span>\)</span>
+我们首先使用简化的 SVD 将权重矩阵进行分解：<span class="arithmatex">\(<span class="arithmatex">\(W = U_r \Sigma_r V_r^T\)</span>\)</span>，它的核心思想在于仅保留矩阵<span class="arithmatex">\(<span class="arithmatex">\(W\)</span>\)</span>中的非零奇异值及其对应的奇异向量，从而减少计算复杂度（通过将对角矩阵中的元素都设置为大于0的奇异值来实现的）。作用是：通过保留非零奇异值和截断较小的数，实现降维和去噪，并且减少了存储和计算成本。
+全 SVD 保留了矩阵<span class="arithmatex">\(<span class="arithmatex">\(W\)</span>\)</span>的所有信息，包括核和余核（核表示满足<span class="arithmatex">\(<span class="arithmatex">\(Wx=0\)</span>\)</span>的所有<span class="arithmatex">\(<span class="arithmatex">\(x\)</span>\)</span>，余核则表示满足<span class="arithmatex">\(<span class="arithmatex">\(y^TW = 0\)</span>\)</span>的所有<span class="arithmatex">\(<span class="arithmatex">\(y\)</span>\)</span>）
+[图片]
+下面，我们开始分别分析预训练部分和微调部分：
+（1）预训练部分：<span class="arithmatex">\(<span class="arithmatex">\(Wx+b\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(Wx\)</span>\)</span>可以展开为：<span class="arithmatex">\(<span class="arithmatex">\(Wx = \sum_{i=1}^n W \langle x, v_i \rangle v_i = \sum_{i=1}^n \left( \sum_{j=1}^r \sigma_j u_j v_j^T \right) \langle x, v_i \rangle v_i = \sum_{j=1}^r \sigma_j \langle x, v_j \rangle u_j\)</span>\)</span>（只有<span class="arithmatex">\(<span class="arithmatex">\(i=j\)</span>\)</span>的时候取1，别的时候都为0）。预训练部分通过奇异值分解，将输入<span class="arithmatex">\(<span class="arithmatex">\(x\)</span>\)</span>投影到预训练权重<span class="arithmatex">\(<span class="arithmatex">\(W\)</span>\)</span>的主要奇异向量上，而这些奇异向量代表了预训练模型中学到的最重要的特征方向。
+（2）微调部分：<span class="arithmatex">\(<span class="arithmatex">\(\Delta W x + \Delta b\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">(\Delta W x <span class="arithmatex">(<span class="arithmatex">\(可以展开为：\)</span>\)</span>\Delta W x = \sum_{i=1}^n \left( \sum_{j=1}^m \sum_{k=1}^n \delta_{jk} u_j v_k^T \right) \langle x, v_i \rangle v_i = \sum_{j=1}^m \sum_{k=1}^n \delta_{jk} \langle x, v_k \rangle u_j
+<span class="arithmatex">(<span class="arithmatex">\(。其中，\)</span>\)</span>\delta_{jk}\)</span>\)</span>量化了权重更新在方向<span class="arithmatex">\(<span class="arithmatex">\(u_j v_k^T\)</span>\)</span>上的贡献，反映了模型在微调过程中对特定输入-输出变换的增强或抑制。
+为此，我们根据奇异值可以对预训练参数进行分区：Zone I：包含最重要的奇异值，占总奇异值和的 50%。这些奇异值对应预训练模型中学到的最重要特征；Zone II：包含剩余的奇异值，占总奇异值和的另外 50%。这些奇异值对应较不显著的特征；Zone III：超出预训练权重范围，不包含预训练信息。
+我们也将<span class="arithmatex">\(<span class="arithmatex">\(\Delta W\)</span>\)</span>投影到不同的子空间：Subspace I：由 Zone I 的奇异向量生成；Subspace II：由 Zone II 的奇异向量生成；Subspace II &amp; III：由 Zone II 和 Zone III 的奇异向量生成。结果如下：
+[图片]
+结果表明：与预训练模型相比，将微调的更新投影到子空间 I 上会导致下游任务的性能只有一些提高，有时甚至根本没有改善。投影到子空间 II 会导致适度的改进，而投影到子空间 II 和 III 会导致显著的性能提升，几乎达到微调模型的水平。
+因此我们可以得到结论：微调主要保留了预训练的重要特征，其利用较不显著的维度进行任务特定学习，并且激活或重新利用了权重空间中未使用的维度。
+这里说了这么多，我来举个简单的例子有助于大家的理解：
+我们假设预训练权重为：<span class="arithmatex">\(<span class="arithmatex">\(W = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4 \\
+5 &amp; 6
+\end{bmatrix}\)</span>\)</span>，然后进行 SVD，分解为：<span class="arithmatex">\(<span class="arithmatex">\(U = \begin{bmatrix}
+-0.23 &amp; 0.88 \\
+-0.52 &amp; 0.24 \\
+-0.82 &amp; -0.40
+\end{bmatrix}, \quad
+\Sigma = \begin{bmatrix}
+9.51 &amp; 0 \\
+0 &amp; 0.51
+\end{bmatrix}, \quad
+V = \begin{bmatrix}
+-0.62 &amp; -0.78 \\
+-0.78 &amp; 0.62
+\end{bmatrix}\)</span>\)</span>
+较大的奇异值 9.51 对应的子空间包含了权重矩阵的主要信息，而较小的奇异值 0.51 对应的子空间包含了次要信息。
+接下来，微调之后，<span class="arithmatex">\(<span class="arithmatex">\(W_{ft} = \begin{bmatrix}
+1.1 &amp; 2.2 \\
+3.3 &amp; 4.4 \\
+5.5 &amp; 6.6
+\end{bmatrix}\)</span>\)</span>，我们也进行 SVD，结果为：
+<span class="arithmatex">\(<span class="arithmatex">\(U = \begin{bmatrix}
+-0.23 &amp; 0.88 \\
+-0.52 &amp; 0.24 \\
+-0.82 &amp; -0.40
+\end{bmatrix}, \quad
+\Sigma + \Delta \Sigma = \begin{bmatrix}
+9.61 &amp; 0 \\
+0 &amp; 0.61
+\end{bmatrix}, \quad
+V = \begin{bmatrix}
+-0.62 &amp; -0.78 \\
+-0.78 &amp; 0.62
+\end{bmatrix}\)</span>\)</span>
+那么：<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma = \begin{bmatrix} 0.10 &amp; 0 \\ 0 &amp; 0.10 \end{bmatrix}\)</span>\)</span>
+较大的<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>值（如 0.10）对应的子空间是模型在微调过程中主要调整的部分，在这个例子中，两个奇异值都增加了 0.10，说明模型在两个子空间上都进行了调整。
+如果<span class="arithmatex">\(<span class="arithmatex">\(\Delta \Sigma\)</span>\)</span>的变化主要集中在较小的奇异值上，说明模型在微调过程中主要利用了预训练权重中较不显著的部分来适应新任务。
+2.2 任务特定模型之间的参数干扰
+在2.1中，我们可以把输出分解为：
+<span class="arithmatex">\(<span class="arithmatex">\(y^{(i)} = \underbrace{\sum_{j=1}^{r} \sigma_j \langle x, v_j \rangle u_j + b}_{\text{pre-trained part}} + \underbrace{\sum_{j=1}^{m} \sum_{k=1}^{n} \delta_{jk}^{(i)} \langle x, v_k \rangle u_j + \Delta b^{(i)}}_{\text{fine-tuned part}}\)</span>\)</span>
+我们通过 SVD，实现了将预训练权重分解为基向量<span class="arithmatex">\(<span class="arithmatex">\(\{u_j\}\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(\{v_j\}\)</span>\)</span>以及对应的奇异值<span class="arithmatex">\(<span class="arithmatex">\(\sigma_j\)</span>\)</span>。
+至于微调部分：微调部分针对特定任务进行调整，不同任务的微调部分可能不同，因此，引入了<span class="arithmatex">\(<span class="arithmatex">\(\delta_{jk}^{(i)}\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(\Delta b^{(i)}\)</span>\)</span>进行调整。
+当前模型合并方法中的加权平均方法合并后的输出为：<span class="arithmatex">\(<span class="arithmatex">\(y_{\text{merged}} = \text{pre-trained part} + \sum_{j=1}^{m} \sum_{k=1}^{n} \left( \sum_{l=1}^{T} \lambda_l \delta_{jk}^{(l)} \right) \langle x, v_k \rangle u_j + \sum_{l=1}^{T} \lambda_l \Delta b^{(l)}\)</span>\)</span>
+这将导致：如果不同任务的微调部分差异较大，直接加权平均可能导致性能下降。
+因此，我们提出一个优化问题：目标是最小化合并模型的输出与特定任务微调模型输出之间的差异，即<span class="arithmatex">\(<span class="arithmatex">\(\min_{\lambda_l} \| y_{\text{merged}} - y^{(i)} \|_2^2 = \min_{\lambda_l} \left\| \sum_{j=1}^{m} \sum_{k=1}^{n} \left[ \left( \sum_{l=1}^{T} \lambda_l \delta_{jk}^{(l)} \right) - \delta_{jk}^{(i)} \right] \langle x^{(i)}, v_k \rangle u_j + \left( \sum_{l=1}^{T} \lambda_l \Delta b^{(l)} \right) - \Delta b^{(i)} \right\|_2^2\)</span>\)</span>
+我们利用三角不等式，将这个目标分解为两部分：权重项的误差和偏置项的误差。
+对于偏置项，可以给定一个解：<span class="arithmatex">\(<span class="arithmatex">\(\lambda_l = (\Delta B^\top \Delta B)^{-1} \Delta B \Delta b^{(i)}\)</span>\)</span>。
+对于权重项目，存在参数干扰：输入<span class="arithmatex">\(<span class="arithmatex">\(x^{(i)}\)</span>\)</span>激活某些维度时（即<span class="arithmatex">\(<span class="arithmatex">\(\langle x, v_k\rangle\)</span>\)</span>不为0时），不同任务的微调部分可能会相互干扰。为此，我们可以：通过增加输入维度，扩大正交子空间，从而减少参数干扰。
+实际上，这个问题也存在于原始模型的参数空间中（我们只需要将基向量替换为标准欧几里得基向量即可）。
+2.3 使用 Sparse Mix of Low-Rank Experts 解决参数干扰
+在模型合并中，不同任务的微调模型共享预训练参数，但它们的微调部分可能会相互干扰，导致合并后的模型性能下降。虽然偏置项的最优合并权重有闭式解，但这个解依赖于具体任务，无法直接推广到所有任务。
+为此，本文提出了Sparse Mixture of Low-rank Experts (SMILE)，其核心特点包括：</li>
+<li>零样本操作：SMILE 模型不需要任何任务相关的数据或训练，可以直接应用于新任务。</li>
+<li>稀疏低秩专家混合：通过引入多个低秩专家（对原有参数矩阵的分解）和一个路由机制，动态地组合不同任务的模型参数。</li>
+<li>共享预训练部分：保留了预训练模型的共享部分，以减少参数冗余并提高泛化能力。
+其结构如下图：
+[图片]
+左边是整体模型的架构：所有任务共享的预训练参数，捕捉通用特征，然后传入 Router 中，根据输入动态选择最相关的专家组合。
+右边是 Router 机制，通过稀疏性约束，确保只有少数专家被激活，从而减少计算开销和参数干扰。
+利用 Router 机制，动态选择专家的过程可以形式化为：
+<span class="arithmatex">\(<span class="arithmatex">\(y_{\text{merged}} = \text{pre-trained part} + \sum_{j=1}^{m} \sum_{k=1}^{n} \left( \sum_{l=1}^{T} \lambda_i(x^{(i)}) \delta_{jk}^{(l)} \right) \langle x^{(i)}, v_k \rangle u_j + \sum_{l=1}^{T} \lambda_i(x^{(i)}) \Delta b^{(l)}\)</span>\)</span>，其中<span class="arithmatex">\(<span class="arithmatex">\(\lambda_i\)</span>\)</span>是一个将输入映射到任务概率分布的函数（即选择出最适合当前输入的那些专家），理想状态是实现一个 one-hot 编码，但这显然不太实际。
+首先，我们选择使用 SVD 来分解每个任务的参数差异<span class="arithmatex">\(<span class="arithmatex">\(\Delta W^{(i)}\)</span>\)</span>，然后使用低秩近似来提取最重要的部分：
+如下：<span class="arithmatex">\(<span class="arithmatex">\(\Delta W^{(i)} = U^{(i)} \Sigma^{(i)} (V^{(i)})^\top = \sum_{j=1}^{r^{(i)}} \sigma_j^{(i)} u_j^{(i)} (v_j^{(i)})^\top\approx \sum_{j=1}^{k} \sigma_j^{(i)} u_j^{(i)} (v_j^{(i)})^\top = U_k^{(i)} \Sigma_k^{(i)} (V_k^{(i)})^\top\)</span>\)</span>
+直白点说就是保留前<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>个最重要的奇异值和对应的奇异向量。
+我举个简单的例子：
+假设<span class="arithmatex">\(<span class="arithmatex">\(\Delta W = \begin{bmatrix}
+0.1 &amp; 0.2 \\
+0.3 &amp; 0.4 \\
+0.5 &amp; 0.6
+\end{bmatrix}\)</span>\)</span>，我们正常分解后得到：<span class="arithmatex">\(<span class="arithmatex">\(U = \begin{bmatrix}
+-0.23 &amp; 0.88 \\
+-0.52 &amp; 0.24 \\
+-0.82 &amp; -0.40
+\end{bmatrix}, \quad\Sigma = \begin{bmatrix}
+0.91 &amp; 0 \\
+0 &amp; 0.51
+\end{bmatrix}, \quad
+V = \begin{bmatrix}
+-0.62 &amp; -0.78 \\
+-0.78 &amp; 0.62
+\end{bmatrix}\)</span>\)</span>
+假设我们希望保留前<span class="arithmatex">\(<span class="arithmatex">\(k=1\)</span>\)</span>个奇异值，结果如下：
+<span class="arithmatex">\(<span class="arithmatex">\(\Delta W \approx \sigma_1 u_1 v_1^T = 0.91 \begin{bmatrix}
+-0.23 \\
+-0.52 \\
+-0.82
+\end{bmatrix} \begin{bmatrix}
+-0.62 &amp; -0.78
+\end{bmatrix}\)</span>\)</span>
+这就是使用低秩近似来提取最重要的部分。
+在这里，作者指出：在给定的秩<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>的情况下，低秩近似<span class="arithmatex">\(<span class="arithmatex">\(U_k^{(i)} \Sigma_k^{(i)} (V_k^{(i)})^\top\)</span>\)</span>是参数差异的最佳近似，因为它最小化了参数误差（很好理解，如果只能挑<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>个，那么挑变化最大的<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>个肯定没错）。
+同时，这样进行低秩近似：将<span class="arithmatex">\(<span class="arithmatex">\(\Delta W\)</span>\)</span>分解为<span class="arithmatex">\(<span class="arithmatex">\(U_k\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(V_k\)</span>\)</span>显著减少了参数数量，并且捕捉了矩阵中最显著的变化。
+路由选择部分，我们的实现如下：首先计算路由得分<span class="arithmatex">\(<span class="arithmatex">\(r^{(i)}\)</span>\)</span>：<span class="arithmatex">\(<span class="arithmatex">\(r^{(i)} = \left\| \sum_{j=1}^{k_{\text{gate}}} \langle x, v_j^{(i)} \rangle \right\|_2 = \left\| V_{k_{\text{gate}}}^{(i)\top} x \right\|_2\)</span>\)</span>
+其中<span class="arithmatex">\(<span class="arithmatex">\(V_{k_{\text{gate}}}^{(i)}\)</span>\)</span>是第<span class="arithmatex">\(<span class="arithmatex">\(i\)</span>\)</span>个专家的低秩矩阵<span class="arithmatex">\(<span class="arithmatex">\(V_k^{(i)}\)</span>\)</span>的前<span class="arithmatex">\(<span class="arithmatex">\(k_{gate}\)</span>\)</span>列（超参数，不可过大，会丧失区分度，4或者8经过实验表明是很好的选择）
+然后，我们根据路由得分计算概率分布<span class="arithmatex">\(<span class="arithmatex">\(p_i = \text{softmax}_i(r^{(i)}) = \text{softmax}_i\left( \left\| V_{k_{\text{gate}}}^{(i)\top} x \right\|_2 \right)\)</span>\)</span>。
+最后，根据概率的值，我们选择 Top-K 的专家：
+<span class="arithmatex">\(<span class="arithmatex">\(\lambda_i = \begin{cases}
+p_i, &amp; p_i \in \text{TopK}(\{p_j\}_{j=1}^T, K) \\
+0, &amp; \text{otherwise}.
+\end{cases}\)</span>\)</span>
+总体而言，输出为：<span class="arithmatex">\(<span class="arithmatex">\(y = (Wx + b) + \sum_{i=1}^{T} \lambda_i \left( U_k^{(i)} \Sigma_k^{(i)} V_k^{(i)\top} x + \Delta b^{(i)} \right)\)</span>\)</span>
+最后，我们对 SMILE 的复杂度进行分析：SMILE 模块在标准线性层的基础上增加了额外的参数，其总参数数量为（一个标准的线性层）：<span class="arithmatex">\(<span class="arithmatex">\(m(n + 1) + T(mk + nk + m) + nTk_{\text{gate}}\)</span>\)</span>，其中：<span class="arithmatex">\(<span class="arithmatex">\(T\)</span>\)</span>是任务数量，<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>是的秩；而对于每个输入 token，SMILE 模块激活的额外参数数量为：<span class="arithmatex">\(<span class="arithmatex">\(nTk_{\text{gate}} + K(mk + nk + m)\)</span>\)</span>，其中<span class="arithmatex">\(<span class="arithmatex">\(K\)</span>\)</span>是每个输入 token 激活的专家数量，第一项是是路由机制的计算开销，第二项是激活的专家的计算开销。
+同时，SMILE 可以自然地扩展到 PEFT 模型：参数低阶分解可以直接<span class="arithmatex">\(<span class="arithmatex">\(\Delta W_{\text{LoRA}} = B_{\text{LoRA}} A_{\text{LoRA}}\)</span>\)</span>，其余保持不变即可</li>
+<li>Experiment
+3.1 实验设置</li>
+<li>我们将 SMILE 和多种模型融合方法进行对比：Simple Averaging、Fisher Merging、RegMean、Task Arithmetic、Ties-Merging、AdaMerging、WEMoE</li>
+<li>实验任务：（1）图像分类：评估 SMILE 在视觉任务中的表现；（2）文本生成：评估 SMILE 在自然语言处理任务中的表现</li>
+<li>微调方法：全量微调和 LoRA
+3.2 开放词汇图像分类任务</li>
+<li>任务：8 个多样化的开放词汇图像分类任务</li>
+<li>CLIP 模型：CLIP-ViT-B/32 和 CLIP-ViT-L/14</li>
+<li>微调设置：微调的时候文本编码器被冻结，仅对视觉编码器进行微调
+不同方法对于验证集的要求如下：
+[图片]
+实验结果如下：
+[图片]
+我们发现：SMILE 不需要额外的训练数据或测试时适应且SMILE 的参数数量显著少于其他方法。同时，随着<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>的增加，模型性能提升，但参数数量也增加。
+具体结果见下表：
+[图片]
+结果表明：SMILE 在所有任务上均取得了具有竞争力的结果：例如，在 CLIP-ViT-L/14 模型上，SMILE 达到了单个模型性能的 99.3%，而参数数量仅为单个模型的 2.56 倍。相比之下，Weight-Ensembling MoE 需要 6.40 倍 的参数， SMILE 在参数效率上显著优于该方法。
+3.3 文本生成任务</li>
+<li>任务：8 个来自 GLUE 基准测试的文本生成任务</li>
+<li>模型：使用 Flan-T5-base 模型进行微调</li>
+<li>微调设置：全量微调和 LoRA
+全量微调的结果如下：
+[图片]
+我们发现：在所有 8 个任务上，SMILE 均优于其他融合方法；当 <span class="arithmatex">\(<span class="arithmatex">\(k_{gate}=8\)</span>\)</span>、<span class="arithmatex">\(<span class="arithmatex">\(k=32\)</span>\)</span> 时，SMILE 达到了单个模型性能的 99.0%，而参数数量仅为单个模型的 1.52 倍。
+LoRA 微调的结果如下：
+[图片]
+在 LoRA 微调场景下，SMILE 依然保持了强大的性能，参数数量仅增加 1.02 倍，达到了单个模型性能的 99.3%。
+3.4 分析性实验
+<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(k_{gate}\)</span>\)</span>对Flan-T5-Base 模型性能和参数数量的影响如下图：
+[图片]
+增加<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(k_{gate}\)</span>\)</span>通常会提高模型性能，但随着参数数量的增加，性能提升的边际效益递减，并且：SMILE 在较小的<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(k_{gate}\)</span>\)</span>值下即可达到接近最优的性能
+<span class="arithmatex">\(<span class="arithmatex">\(k\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(k_{gate}\)</span>\)</span>对CLIP-ViT 模型的影响也类似。
+<span class="arithmatex">\(<span class="arithmatex">\(Top-K\)</span>\)</span>中<span class="arithmatex">\(<span class="arithmatex">\(K\)</span>\)</span>的变化对模型的影响如下（CLIP-ViT-B/32 模型、8 个图像分类任务）：
+[图片]
+我们发现：随着<span class="arithmatex">\(<span class="arithmatex">\(K\)</span>\)</span>的增大，平均准确率略有下降（这是因为：每个专家专门针对特定任务进行微调，因此只需选择最相关的少数专家即可达到高性能）
+同时，随着<span class="arithmatex">\(<span class="arithmatex">\(K\)</span>\)</span>的变化，单任务的准确率相对稳定，这表明：路由机制具有较强的鲁棒性
+SMILE 在大规模模型上也适用：具体来说，我们在 Mistral-7B-v0.1 模型上进行了实验：
+我们有以下四个模型：Mistral-7B-v0.1（记为<span class="arithmatex">\(<span class="arithmatex">\(M_0\)</span>\)</span>）、数学领域的专家模型（记为<span class="arithmatex">\(<span class="arithmatex">\(M_1\)</span>\)</span>），另外两个其他领域的模型（分别记为<span class="arithmatex">\(<span class="arithmatex">\(M_2\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(M_3\)</span>\)</span>）。
+我们进行如下合并：<span class="arithmatex">\(<span class="arithmatex">\(M_{0;1}= M_0 + M_1\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(M_{0;2}= M_0 + M_2\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(M_{0;3}= M_0 + M_3\)</span>\)</span>，<span class="arithmatex">\(<span class="arithmatex">\(M_{0;123}= M_0 + M_1 + M_2 + M_3\)</span>\)</span>。
+在数学任务上，<span class="arithmatex">\(<span class="arithmatex">\(M_{0;1}\)</span>\)</span>和<span class="arithmatex">\(<span class="arithmatex">\(M_{0;123}\)</span>\)</span>表现出色，说明<span class="arithmatex">\(<span class="arithmatex">\(M_1\)</span>\)</span>作为数学专家的有效性
+<span class="arithmatex">\(<span class="arithmatex">\(M_{123}\)</span>\)</span>在所有任务上均表现出色，展示了 SMILE 在多任务学习中的潜力。
+同时，我们通过调整低秩专家的秩，分析其对模型性能的影响，结果如下图：
+[图片]
+我们发现：随着专家秩的增加，GSM8K 分数总体提升。这很自然，因为路由机制成功选择了适合数学问题的专家，而增加秩使得低秩专家能够捕捉更多任务特定的信息。
+同时，下表反映了我们上文提到的：“<span class="arithmatex">\(<span class="arithmatex">\(M_{123}\)</span>\)</span>在所有任务上均表现出色，展示了 SMILE 在多任务学习中的潜力”
+[图片]****</li>
+</ol>
+
+
+
+
+ 
+ 
+ 
+<hr><blockquote class="page-copyright">
+  <span><i class="md-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.7 19-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4Z"></path></svg></i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg></i>发现错误？想一起完善？ <a href="None" title="edit.link.title" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59 5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7Z"></path></svg></i>本页面贡献者：</span><span class="page_contributors">OI-wiki</span><br>
+  <span><i class="md-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.08 10.86c.05-.33.16-.62.3-.86.3-.56.81-.85 1.5-.86.45 0 .86.2 1.15.49.28.31.47.74.47 1.17h1.8c-.02-.47-.11-.9-.3-1.3-.15-.38-.38-.72-.68-1-1.45-1.34-4.14-1.15-5.37.37-1.29 1.67-1.32 4.59-.01 6.26 1.21 1.49 3.86 1.7 5.3.37.31-.25.56-.56.76-.92.16-.36.27-.74.28-1.15H13.5c0 .21-.07.4-.16.57-.09.19-.21.34-.34.47-.33.26-.72.4-1.14.4-.36-.01-.66-.08-.89-.23a1.41 1.41 0 0 1-.59-.64c-.5-.9-.42-2.15-.3-3.14M12 2C6.5 2 2 6.5 2 12c.53 13.27 19.5 13.26 20 0 0-5.5-4.5-10-10-10m0 18c-4.41 0-8-3.59-8-8 .44-10.61 15.56-10.61 16 0 0 4.41-3.59 8-8 8Z"></path></svg></i>本页面的全部内容在 <strong></strong> 协议之条款下提供，附加条款亦可能应用</span>
+</blockquote>
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <script>function scrollFunction(){20<document.body.scrollTop||20<document.documentElement.scrollTop?document.getElementById("myBtn").style.display="block":document.getElementById("myBtn").style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}window.onscroll=function(){scrollFunction()}</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>  
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href="https://yooheng416.com/" rel="noreferrer" target="_blank">© Copyright 2025 Yuheng Wang.</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+      <div id="miitbeian"></div>
+    </a>
+  
+</div>
+
+<div style="float:right" class="build_date_utc">
+  <a href="https://github.com/OI-wiki/OI-wiki">
+    最近更新：, 2025-08-16
+  </a>
+</div>
+<script>"oi-wiki.com"==window.location.hostname&&(document.getElementById("miitbeian").innerHTML='<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>'),console.log("%c OI Wiki %c  %c","background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent"),console.log("少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org")</script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.b6c651e9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.69a41b14.min.js"></script>
+      
+        <script src="../../../_static/js/math-csr.js?math-csr"></script>
+      
+        <script src="../../../assets/vendor/mathjax/es5/tex-mml-chtml.js?math-csr"></script>
+      
+      <script>"use strict";"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+    
+  </body>
+</html>
