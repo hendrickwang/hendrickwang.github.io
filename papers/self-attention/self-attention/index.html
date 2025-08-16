@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#如何得到b1" class="md-skip">
+        <a href="#b1" class="md-skip">
           Skip to content
         </a>
       
@@ -1269,21 +1269,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#如何得到b1" class="md-nav__link">
+  <a href="#b1" class="md-nav__link">
     如何得到<span class="arithmatex">\(b^1\)</span>？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#多头注意力" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     多头注意力
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#位置编码" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     位置编码
   </a>
   
@@ -1493,21 +1493,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#如何得到b1" class="md-nav__link">
+  <a href="#b1" class="md-nav__link">
     如何得到<span class="arithmatex">\(b^1\)</span>？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#多头注意力" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     多头注意力
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#位置编码" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     位置编码
   </a>
   
@@ -1534,7 +1534,7 @@
 
 <p><strong>每一个输出的向量都需要考虑输入的每一个向量</strong></p>
 <p><img alt="" src="../image.png" ></p>
-<h4 id="如何得到b1">如何得到<span class="arithmatex">\(b^1\)</span>？<a class="headerlink" href="#如何得到b1" title="Permanent link"></a></h4>
+<h4 id="b1">如何得到<span class="arithmatex">\(b^1\)</span>？</h4>
 <ul>
 <li>
 <p>首先，需要考虑<span class="arithmatex">\(a^1\)</span>和其他输入向量之间的<em>关联程度</em><span class="arithmatex">\(\alpha\)</span>。
@@ -1557,11 +1557,11 @@
 我们发现，需要训练的参数就是三个矩阵<span class="arithmatex">\(W^q,W^k,W^v\)</span>。</p>
 </li>
 </ul>
-<h4 id="多头注意力">多头注意力<a class="headerlink" href="#多头注意力" title="Permanent link"></a></h4>
+<h4 id="_1">多头注意力</h4>
 <p>原因：我们需要对输入的向量之间定义相关性，这就涉及到<span class="arithmatex">\(q\)</span>和<span class="arithmatex">\(k\)</span>的乘积来得到。而我们发现，我们往往可能不止需要定义一种相关性。因此，我们需要多头注意力。</p>
 <div class="arithmatex">\[q^{i,1} = W^{q,1}q^i\\q^{i,2} = W^{q,2}q^i\]</div>
 <p>对于<span class="arithmatex">\(k,v\)</span>也是一样进行相同的操作。<img alt="alt text" src="../image-6.png" ></p>
-<h4 id="位置编码">位置编码<a class="headerlink" href="#位置编码" title="Permanent link"></a></h4>
+<h4 id="_2">位置编码</h4>
 <ul>
 <li>我们发现上面<span class="arithmatex">\(a^1,a^2...\)</span>并没有考虑到位置带来的信息，但是实际上句子中每个词所在的位置理应是携带信息的，所以需要引入位置编码，即下面的<span class="arithmatex">\(e^i\)</span>。<img alt="alt text" src="../image-7.png" ></li>
 </ul>

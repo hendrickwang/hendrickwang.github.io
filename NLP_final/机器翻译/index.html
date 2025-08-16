@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#机器翻译任务的定义" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -695,49 +695,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#机器翻译任务的定义" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     机器翻译任务的定义
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#统计机器翻译" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     统计机器翻译
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#序列到序列模型seq2seq" class="md-nav__link">
+  <a href="#seq2seq" class="md-nav__link">
     序列到序列模型（Seq2Seq）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#贪婪解码" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     贪婪解码
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#exhaustive-search-decoding穷举搜索解码" class="md-nav__link">
+  <a href="#exhaustive-search-decoding" class="md-nav__link">
     Exhaustive Search Decoding（穷举搜索解码）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#柱搜索集束搜索算法beam-search-decoding" class="md-nav__link">
+  <a href="#beam-search-decoding" class="md-nav__link">
     柱搜索、集束搜索算法（Beam search decoding）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#评价指标" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     评价指标
   </a>
   
@@ -1525,49 +1525,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#机器翻译任务的定义" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     机器翻译任务的定义
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#统计机器翻译" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     统计机器翻译
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#序列到序列模型seq2seq" class="md-nav__link">
+  <a href="#seq2seq" class="md-nav__link">
     序列到序列模型（Seq2Seq）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#贪婪解码" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     贪婪解码
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#exhaustive-search-decoding穷举搜索解码" class="md-nav__link">
+  <a href="#exhaustive-search-decoding" class="md-nav__link">
     Exhaustive Search Decoding（穷举搜索解码）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#柱搜索集束搜索算法beam-search-decoding" class="md-nav__link">
+  <a href="#beam-search-decoding" class="md-nav__link">
     柱搜索、集束搜索算法（Beam search decoding）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#评价指标" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     评价指标
   </a>
   
@@ -1592,9 +1592,9 @@
     <h1>Lesson-7 机器翻译</h1>
   
 
-<h5 id="机器翻译任务的定义">机器翻译任务的定义<a class="headerlink" href="#机器翻译任务的定义" title="Permanent link"></a></h5>
+<h5 id="_1">机器翻译任务的定义</h5>
 <p>利用计算机程序将一种语言的文本自动转换为另一种语言的文本，同时尽可能保持原文的语义、语法结构和风格特征。</p>
-<h5 id="统计机器翻译">统计机器翻译<a class="headerlink" href="#统计机器翻译" title="Permanent link"></a></h5>
+<h5 id="_2">统计机器翻译</h5>
 <p>统计机器翻译（Statistical Machine Translation，SMT）是一种基于统计学模型的机器翻译方法。SMT通过从大量双语语料中学习，利用源语言和目标语言之间的统计关系进行翻译。它主要通过翻译模型和语言模型来生成目标语言的翻译。</p>
 <ul>
 <li>翻译模型：翻译模型捕捉源语言和目标语言之间的转换关系。它通过学习源语言句子与目标语言句子之间的对齐规则来进行翻译。常用的翻译模型包括短语翻译模型和词对词翻译模型。</li>
@@ -1619,7 +1619,7 @@
 <li>短语对齐和解码过程的计算复杂度较高，尤其是对于长句</li>
 <li>虽然语言模型能够提升目标语言句子的流畅性，但其能力有限，难以处理复杂的语言现象</li>
 </ul>
-<h5 id="序列到序列模型seq2seq">序列到序列模型（Seq2Seq）<a class="headerlink" href="#序列到序列模型seq2seq" title="Permanent link"></a></h5>
+<h5 id="seq2seq">序列到序列模型（Seq2Seq）</h5>
 <p>序列到序列模型是一种深度学习架构，旨在将一个输入序列转换为一个输出序列。</p>
 <p>通常，Seq2Seq 模型由两个部分组成：</p>
 <ul>
@@ -1628,7 +1628,7 @@
 </ul>
 <p>序列到序列模型除了适用于机器翻译，还适用于：Summarization、Dialogue、Code generation 和 Parsing</p>
 <p>序列到序列模型实际上也是一种条件语言模型：因为 Decoder 基于 Encoder 的输出和之前的上下文预测下一个词</p>
-<h5 id="贪婪解码">贪婪解码<a class="headerlink" href="#贪婪解码" title="Permanent link"></a></h5>
+<h5 id="_3">贪婪解码</h5>
 <p>核心思想：在每一步的生成过程中，选择当前可能性最大的输出，而不考虑未来可能的输出。</p>
 <p>优点：</p>
 <ul>
@@ -1642,9 +1642,9 @@
 <li>生成序列的多样性较低</li>
 <li>错误传播：生成序列过程中，由于一次错误的预测会影响后续的解码步骤，导致生成的序列整体质量下降</li>
 </ul>
-<h5 id="exhaustive-search-decoding穷举搜索解码">Exhaustive Search Decoding（穷举搜索解码）<a class="headerlink" href="#exhaustive-search-decoding穷举搜索解码" title="Permanent link"></a></h5>
+<h5 id="exhaustive-search-decoding">Exhaustive Search Decoding（穷举搜索解码）</h5>
 <p>旨在找到序列生成任务中的全局最优解。它通过评估所有可能的输出序列，选择概率最高的序列。这种方法成本太高，可行性不足</p>
-<h5 id="柱搜索集束搜索算法beam-search-decoding">柱搜索、集束搜索算法（Beam search decoding）<a class="headerlink" href="#柱搜索集束搜索算法beam-search-decoding" title="Permanent link"></a></h5>
+<h5 id="beam-search-decoding">柱搜索、集束搜索算法（Beam search decoding）</h5>
 <p>核心思想：在解码器的每一步中，保存k个最可能的结果（我们称之为 hypothesis，hypothesis的分数是它每一步的对数概率，即：</p>
 <div class="arithmatex">\[score(y_1,y_2,...,y_t) = \log P_{LM}(y1,...,y_t|x)=\sum_{i=1}^t\log P_{LM}(y_i|y_1,y_2,...,y_{i-1},x)\]</div>
 <p><img alt="alt text" src="../image-22.png" ></p>
@@ -1654,7 +1654,7 @@
 <p>如果有 n 个完全的假说，选择哪个呢？</p>
 <p>我们可以按照 score 的大小来进行选择，但是显然：假说越长，score越小，因此，我们应该对长度规范化：</p>
 <div class="arithmatex">\[\frac{1}{t}\sum_{i=1}^t\log P_{LM}(y_i|y_1,y_2,...,y_{i-1},x)\]</div>
-<h5 id="评价指标">评价指标<a class="headerlink" href="#评价指标" title="Permanent link"></a></h5>
+<h5 id="_4">评价指标</h5>
 <p>BLEU：机器翻译中最广泛使用的自动化评价指标之一，用于衡量机器翻译结果与参考翻译之间的相似性。</p>
 <p>核心思想：通过计算机器翻译输出与一个或多个参考翻译之间的 n-gram 匹配程度，来评估翻译质量。BLEU 的评分范围是 0 到 1（通常乘以 100 表示为百分制），分数越高表示翻译越接近参考翻译。</p>
 <p>其公式如下：</p>

@@ -1616,12 +1616,12 @@
     <h1>The Factuality of Large Language Models in the Legal Domain</h1>
   
 
-<h5 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link"></a></h5>
+<h5 id="abstract">Abstract</h5>
 <p>本文研究了 LLMs 在法律领域作为知识库的可行性：</p>
 <p>（1）作者设计了一个包含多种关于案例法和立法的事实性问题的数据集；</p>
 <p>（2）通过精确匹配、别名匹配和模糊匹配等方法评估了多种 LLMs 在处理这类问题上的能力，发现：使用别名和模糊匹配时，模型的表现显著提高；</p>
 <p>（3）作者发现，在法律文档上进行预训练的模型（SaulLM）可以将事实性准确度一定程度上提升。</p>
-<h5 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h5>
+<h5 id="introduction">Introduction</h5>
 <p>相比于 KBs，LMs 一方面可以存储更多的事实，另一方面可以直接用自然语言去查询，<strong>大于10B参数量的 LLM 可以存储维基百科中的所有知识并支持用自然语言去查询</strong>，但是准确度可能对短语的改变产生很大的影响。</p>
 <p>虽然当前的 LLMs 都表现出很好的 LM-as-KB 的特性，但是<strong>幻觉问题也很严重</strong>，特别是在于一些特定领域中（因为会有一些只存在于这个领域的专有名词），本文通过允许大模型在不确定的时候不作答来减少幻觉问题。</p>
 <p>本文处理了四个问题：</p>
@@ -1629,21 +1629,21 @@
 <p>（2）LLM 能否避免生成错误的答案？</p>
 <p>（3）few-shot 是否能提高LLMs的准确性？</p>
 <p>（4）对法律文件进行训练能提高LLM的准确性吗？</p>
-<h5 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link"></a></h5>
+<h5 id="dataset">Dataset</h5>
 <ul>
 <li>虽然很多现实生活中的请求不再关注原子信息（案件管辖权或立法等），但是首先需要确定LLM不会弄混一些原子信息，否则后面涉及到的法条、例子都会出错，原子信息是<strong>基石</strong>；</li>
 <li>本文利用维基百科上的内容，挑选出了法律相关内容，构造了8920条问答对：<img alt="alt text" src="../image.png" ></li>
 </ul>
-<h5 id="models">Models<a class="headerlink" href="#models" title="Permanent link"></a></h5>
+<h5 id="models">Models</h5>
 <p>为了保护个人信息隐私，作者没有调用api，而是用本地部署的模型进行测试和训练 Gemma-2B, Gemma-7B, Llama-2-7B,Llama-3-8B, Mistral-7B, Phi-3-min-4k，RecurrentGemma-2B，还测试了SaulLM（Mistral-7B fintuned on legal corpora）。</p>
-<h5 id="prompt-strategy">Prompt Strategy<a class="headerlink" href="#prompt-strategy" title="Permanent link"></a></h5>
+<h5 id="prompt-strategy">Prompt Strategy</h5>
 <ul>
 <li>采用zero-shot和few-shot，并且允许模型回答：我不知道</li>
 <li>每一个问题<span class="arithmatex">\(q\)</span>都被严格归类<span class="arithmatex">\((s,r)\)</span>，<span class="arithmatex">\(s\)</span>表示类别，<span class="arithmatex">\(r\)</span>表示关系，比如下面这个例子：
 <img alt="alt text" src="../image-1.png" >
 <span class="arithmatex">\(s\)</span>指的就是<em>legal cases</em>，<span class="arithmatex">\(r\)</span>指的则是<em>majority opinion of</em></li>
 </ul>
-<h5 id="evaluation-methods">Evaluation methods<a class="headerlink" href="#evaluation-methods" title="Permanent link"></a></h5>
+<h5 id="evaluation-methods">Evaluation methods</h5>
 <p>本文模仿LM-as-KB的评估指标，定义了：</p>
 <div class="arithmatex">\[P_{LLM} = \frac{|correct answers|}{|answered questions|}\]</div>
 <div class="arithmatex">\[R_{LLM} = \frac{|correct answers|}{|all questions|}\]</div>
@@ -1651,7 +1651,7 @@
 <p>（1）Exact matching：回答和标答完全一致</p>
 <p>（2）Alias matching：回答是标答的别名</p>
 <p>（3）Fuzzy matching：回答包含标答或者表达的别名</p>
-<h5 id="results">Results<a class="headerlink" href="#results" title="Permanent link"></a></h5>
+<h5 id="results">Results</h5>
 <p><img alt="alt text" src="../image-2.png" >
 * 使用AM和FM时的准确率会大EM
 * Few-shot可以显著提高准确率
@@ -1659,13 +1659,13 @@
 <p><strong>有意思的是，即使不用few shot教模型说 I donnot know，模型也会自己选择弃权</strong>
 <img alt="" src="../image-3.png" ></p>
 <p><strong>in-context examples会提高LLM的精度</strong></p>
-<h5 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h5>
+<h5 id="conclusion">Conclusion</h5>
 <ul>
 <li>performance of LLMs improves significantly when using alias and fuzzy matching</li>
 <li>Abstaininstructions and few shot prompting increase factuality</li>
 <li>Pre-training on legal documents substantially improves the precision, highlighting the importance of domain-specific pretraining.</li>
 </ul>
-<h5 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link"></a></h5>
+<h5 id="tips">Tips</h5>
 <p>我查了Wiki后发现，他们的数据确实是从Wiki上爬去和收集的：
 <img alt="" src="../image-4.jpg" >
 <img alt="" src="../image-4.png" ></p>

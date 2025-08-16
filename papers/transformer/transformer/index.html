@@ -1449,7 +1449,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#怎么训练" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     怎么训练
   </a>
   
@@ -1476,7 +1476,7 @@
 
 <p><strong>Transformers是Seq2Seq的模型。</strong>
 <img alt="alt text" src="../image.png" ></p>
-<h4 id="encoder">Encoder<a class="headerlink" href="#encoder" title="Permanent link"></a></h4>
+<h4 id="encoder">Encoder</h4>
 <p><em>输入一排向量，输出一排向量。</em>
 <strong>具体来说，Encoder中一个Block的流程如下：</strong>
 * 得到self-attention的第一个输出<span class="arithmatex">\(a\)</span>，其与第一个输入<span class="arithmatex">\(b\)</span>相加<span class="arithmatex">\(a'=a+b\)</span>，这一步叫做residual。
@@ -1484,18 +1484,18 @@
 * 再将layer normalization后的结果作为fully network的输入，得到神经网络的输出，并也依次进行residual和layer normalization，得到<strong>最终的结果</strong>。<img alt="alt text" src="../image-1.png" >
 论文中的原图如下：
 <img alt="alt text" src="../image-2.png" ></p>
-<h4 id="decoder">Decoder<a class="headerlink" href="#decoder" title="Permanent link"></a></h4>
+<h4 id="decoder">Decoder</h4>
 <ul>
 <li>Autoregressive：Decoder的第一个输出是BEGIN的符号，后面的每个输入都是上一步它自己的输出。<img alt="alt text" src="../image-3.png" ></li>
 <li>由于这样的特性，Decoder的注意力机制实际上是masked self-attention：
 这表示，只能计算后面的向量和前面的注意力值。例如，得到输出<span class="arithmatex">\(b^2\)</span>时，只能：<span class="arithmatex">\(\alpha^{2,1}=norm(k^1q^2)\)</span>，<span class="arithmatex">\(\alpha^{2,2}=norm(k^2q^2)\)</span>，<span class="arithmatex">\(b^2=\alpha^{2,1}v^1+\alpha^{2,2}v^2\)</span><img alt="alt text" src="../image-4.png" ></li>
 <li>Non-Autoregressive：输入全为BEGIN，BEGIN的多少可以简单预测。它的优势是：1）并行化生成；2）可以控制输出的长度。<img alt="alt text" src="../image-5.png" ></li>
 </ul>
-<h4 id="cross-attention">Cross Attention<a class="headerlink" href="#cross-attention" title="Permanent link"></a></h4>
+<h4 id="cross-attention">Cross Attention</h4>
 <p><strong>Encoder和Decoder之间信息交流的桥梁。</strong>
 <img alt="alt text" src="../image-6.png" >
 Encoder提供<span class="arithmatex">\(key、value\)</span>，Decoder提供<span class="arithmatex">\(query\)</span>：首先Decoder的<span class="arithmatex">\(q\)</span>和Encoder的<span class="arithmatex">\(k\)</span>计算出attention的值，再分别和<span class="arithmatex">\(v\)</span>相乘，求和后成为Decoder最后一层神经网络的输入。</p>
-<h4 id="怎么训练">怎么训练<a class="headerlink" href="#怎么训练" title="Permanent link"></a></h4>
+<h4 id="_1">怎么训练</h4>
 <p>标准答案和Decoder输出的答案之间存在cross entropy，目标就是最小化这个cross entropy。
 <img alt="alt text" src="../image-8.png" >
 <strong>这里值得注意的是，Decoder训练时候的输入为正确答案，这被称为Teacher Forcing。</strong></p>

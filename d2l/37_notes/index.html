@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#为什么要微调" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -1428,35 +1428,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#为什么要微调" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     为什么要微调？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#网络架构" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     网络架构
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#微调模型权重的初始化" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     微调模型权重的初始化
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#训练" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     训练
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#固定一些层" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     固定一些层
   </a>
   
@@ -1481,24 +1481,24 @@
     <h1>37 notes</h1>
   
 
-<h5 id="为什么要微调">为什么要微调？<a class="headerlink" href="#为什么要微调" title="Permanent link"></a></h5>
+<h5 id="_1">为什么要微调？</h5>
 <p>标注数据是一件很贵的事情。而训练模型的时候，我们知道：数据越多，训练效果越好。</p>
 <p>因此，我们希望做到：我们在已经通过大量数据训练好的模型上进行“轻微”的训练，就实现很好的效果。</p>
-<h5 id="网络架构">网络架构<a class="headerlink" href="#网络架构" title="Permanent link"></a></h5>
+<h5 id="_2">网络架构</h5>
 <p>我们以分类模型为例，它的网络架构一般是：底层的网络将特征进行提取，最上部的网络进行分类。</p>
 <p>那么我们微调，到底是调哪个部分？</p>
 <p>显然，分类的架构需要改变，但是，在原先很大数据集上训练出来的一个“特征提取器”应当也可以一定程度上完成当前任务的特征提取。</p>
 <p><img alt="alt text" src="../image-46.png" ></p>
-<h5 id="微调模型权重的初始化">微调模型权重的初始化<a class="headerlink" href="#微调模型权重的初始化" title="Permanent link"></a></h5>
+<h5 id="_3">微调模型权重的初始化</h5>
 <p>我们把除了最后分类那一层的参数全都拷贝过来，作为微调模型初始化的点。</p>
 <p>这里其实很好理解，我们希望找到最小值点，那么训练好的模型的权重实际上已经位于一个较低的位置了，我们从这里开始找最小值点，显然是更容易也更快的。</p>
 <p><img alt="alt text" src="../image-47.png" ></p>
-<h5 id="训练">训练<a class="headerlink" href="#训练" title="Permanent link"></a></h5>
+<h5 id="_4">训练</h5>
 <p>我们要用更强的正则化：</p>
 <p>（1）较小的学习率：因为我们已经在较低的位置了，同时也为了防止 overfitting</p>
 <p>（2）使用更少的数据迭代</p>
 <p>一般来说，原数据集比微调的数据大得多，微调的效果更好。</p>
-<h5 id="固定一些层">固定一些层<a class="headerlink" href="#固定一些层" title="Permanent link"></a></h5>
+<h5 id="_5">固定一些层</h5>
 <p>一般来说，一个深度的神经网络的底层和顶层区别很大：</p>
 <p>我们通常认为，网络的底层致力于提取最基本的特征，那么它们的通用属性也就更强；而网络的顶层则更贴合任务的要求。</p>
 <p>因此，我们可以固定底部的一些层。</p>

@@ -742,7 +742,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#self-attention-的问题" class="md-nav__link">
+  <a href="#self-attention_1" class="md-nav__link">
     Self-Attention 的问题
   </a>
   
@@ -1504,7 +1504,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#self-attention-的问题" class="md-nav__link">
+  <a href="#self-attention_1" class="md-nav__link">
     Self-Attention 的问题
   </a>
   
@@ -1537,7 +1537,7 @@
   
 
 <p>我们发现：RNN 在计算上存在一个问题：即其每次生成都需要计算 N 步，并且这 N 步是按顺序依次计算的，不可以并行</p>
-<h5 id="self-attention">Self-Attention<a class="headerlink" href="#self-attention" title="Permanent link"></a></h5>
+<h5 id="self-attention">Self-Attention</h5>
 <p>鉴于 RNN 的这个缺点，我们提出 Self-Attention：每个词都要 Attend 到所有词，并且距离都认定为1，这个过程是可以并行的。</p>
 <p>具体来说，Self-Attention 的流程是这样的：</p>
 <ul>
@@ -1546,7 +1546,7 @@
 <li>对于任意两个输入向量之间，我们都计算它们的 Attention 分数：<span class="arithmatex">\(e_ij = q_i^T k_j\)</span>，然后，对于每个<span class="arithmatex">\(i\)</span>，我们根据 Attention 分数来计算对应的权重：<span class="arithmatex">\(\alpha_i = \textbf{Softmax}(e_i)\)</span></li>
 <li>根据得到的权重，我们得到输出：<span class="arithmatex">\(o_i = \sum _j \alpha_{ij}v_j\)</span></li>
 </ul>
-<h5 id="self-attention-的问题">Self-Attention 的问题<a class="headerlink" href="#self-attention-的问题" title="Permanent link"></a></h5>
+<h5 id="self-attention_1">Self-Attention 的问题</h5>
 <p>（1）对位置不敏感：我们不难发现，Self-Attention 中并没有引入任何与位置有关的内容，任意两个位置之间都默认距离为1。</p>
 <p>解决方法：位置编码：把词的位置表示为向量</p>
 <div class="arithmatex">\[\tilde{x_i} = x_i + p_i\]</div>
@@ -1576,7 +1576,7 @@
 <p>前馈层包含至少一个非线性激活函数，它能够引入更多的表达能力和复杂的特征组合。</p>
 <p>（3）训练的时候，模型是不能看见未来的词的，这是不可接受的，因为生成一个词时，模型应该只能基于当前和过去的词进行预测，而不能看到将来。解决方法：Masking：在训练语言生成任务（如机器翻译、文本生成）时，通常将一个词后面的所有词的attention score遮盖，确保模型在生成当前词时只能看到当前和之前的词：</p>
 <p><img alt="alt text" src="../image-25.png" ></p>
-<h5 id="transformer">Transformer<a class="headerlink" href="#transformer" title="Permanent link"></a></h5>
+<h5 id="transformer">Transformer</h5>
 <p>总体架构如下图：</p>
 <p><img alt="alt text" src="../image-26.png" ></p>
 <p>从 Encoder 开始说起：首先，输入经过位置编码后进入一个 Block 中，首先，先进行 Multihead Attention，接着，进行 Add 和 Norm，得到的输出再被送入一个前馈层中，再进行一次 Add 和 Norm，这就得到了一个 Block 的输出，会存在多个 Block。</p>

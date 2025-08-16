@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#批量归一化" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -1159,21 +1159,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#批量归一化" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     批量归一化
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#实现思想" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     实现思想
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#作用范围" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     作用范围
   </a>
   
@@ -1497,21 +1497,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#批量归一化" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     批量归一化
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#实现思想" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     实现思想
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#作用范围" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     作用范围
   </a>
   
@@ -1536,7 +1536,7 @@
     <h1>Lesson-28</h1>
   
 
-<h5 id="批量归一化">批量归一化<a class="headerlink" href="#批量归一化" title="Permanent link"></a></h5>
+<h5 id="_1">批量归一化</h5>
 <ul>
 <li>
 <p>动机：当我们构造一个很深的网络的时候，我们定义的损失函数（输出导致的部分）和原始的数据输入离得就会非常 <strong>“远”</strong>（中间间隔了许多层、许多函数），这就会导致：离输出近的部分梯度大，远的部分梯度小（梯度消失）</p>
@@ -1548,7 +1548,7 @@
 <p>因此我们考虑：能否实现在训下层的时候，避免对上层的影响呢？</p>
 </li>
 </ul>
-<h5 id="实现思想">实现思想<a class="headerlink" href="#实现思想" title="Permanent link"></a></h5>
+<h5 id="_2">实现思想</h5>
 <p>我们固定每一层中输出的均值和方差，我们认为这样可以保证每一层输出的分布都是固定的、相似的。首先，我们固定小批量中的均值和方差（下面的<span class="arithmatex">\(B\)</span>就是批量的样本数，<span class="arithmatex">\(x_i\)</span>就是批量中的样本）：</p>
 <div class="arithmatex">\[\mu_B = \frac{1}{|B|}\sum_{i \in B}x_i\]</div>
 <div class="arithmatex">\[\sigma_B^2 = \frac{1}{|B|}\sum_{i \in B}(x_i-\mu_B)^2+\epsilon\]</div>
@@ -1556,7 +1556,7 @@
 <div class="arithmatex">\[X_{i+1}=\gamma\frac{X_i-\hat{\mu_B}}{\hat{\sigma_B}}+\beta\]</div>
 <p>这里，下标<span class="arithmatex">\(i\)</span>表示的是更新的步数，<span class="arithmatex">\(X\)</span>表示这个 Batch 中所有的样本。</p>
 <p>我们引入了两个可以学习的参数<span class="arithmatex">\(\gamma\)</span>和<span class="arithmatex">\(\beta\)</span>，这是因为，可能方差为1，均值为0的分布并不是最好的，最好的可以通过学习来得到。</p>
-<h5 id="作用范围">作用范围<a class="headerlink" href="#作用范围" title="Permanent link"></a></h5>
+<h5 id="_3">作用范围</h5>
 <ul>
 <li>对于全连接层来说，它作用在特征维；对于卷积层，它作用在通道维：我们可以这样理解，对于一个100通道的图片，它的每一个像素点都是一个样本，那么对于这个样本而言，每个通道就是它的特征</li>
 <li>作用在每个全连接层和卷积层的输入上；作用在每个全连接层和卷积层的输出后，在激活函数之前</li>

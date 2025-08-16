@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#梯度" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -819,21 +819,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#梯度" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     梯度
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#链式法则" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     链式法则
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#自动求导" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     自动求导
   </a>
   
@@ -1497,21 +1497,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#梯度" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     梯度
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#链式法则" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     链式法则
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#自动求导" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     自动求导
   </a>
   
@@ -1536,7 +1536,7 @@
     <h1>Lesson-6</h1>
   
 
-<h4 id="梯度">梯度<a class="headerlink" href="#梯度" title="Permanent link"></a></h4>
+<h4 id="_1">梯度</h4>
 <p><strong>对于向量-标量之间求导后的形状如下图：</strong>
 <img alt="alt text" src="../image.png" >
 （1）标量对向量求导，若向量为列向量，求导后的结果为行向量，具体公式如下：</p>
@@ -1558,12 +1558,12 @@
   \end{matrix}
   \right]
 \]</div>
-<h4 id="链式法则">链式法则<a class="headerlink" href="#链式法则" title="Permanent link"></a></h4>
+<h4 id="_2">链式法则</h4>
 <p><img alt="alt text" src="../image-6.png" >
 例题：<span class="arithmatex">\(X\in R^{m \times n},w \in R^n,y\in R^m，z = ||Xw-y||^2\)</span>，求<span class="arithmatex">\(\frac{\partial z}{\partial w}\)</span>。
 解：设<span class="arithmatex">\(a=Xw,b=a-y\)</span>，则<span class="arithmatex">\(z=||b||^2\)</span>
 于是有：<span class="arithmatex">\(\frac{\partial z}{\partial w}=\frac{\partial z}{\partial b}\frac{\partial b}{\partial a}\frac{\partial a}{\partial w}=\frac{\partial ||b||^2}{\partial b}\frac{\partial a-y}{\partial a}\frac{\partial Xw}{\partial w}=2b^T · 1 · X=2(Xw-y)^TX\)</span></p>
-<h4 id="自动求导">自动求导<a class="headerlink" href="#自动求导" title="Permanent link"></a></h4>
+<h4 id="_3">自动求导</h4>
 <p><strong>自动求导计算一个函数在指定值上的倒数，它有别于符号求导和数值求导。</strong>
 这里引入<strong>计算图</strong>的概念：</p>
 <p>（1）将代码分解成操作子</p>

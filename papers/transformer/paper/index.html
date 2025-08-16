@@ -1602,29 +1602,29 @@
     <h1>Transformer</h1>
   
 
-<h5 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link"></a></h5>
+<h5 id="abstract">Abstract</h5>
 <ul>
 <li>提出了一个simple的架构；</li>
 <li>仅仅依赖于注意力机制，没有卷积和循环神经网络；</li>
 <li>这里我学习了一下BLUE SCORE；</li>
 <li>机器翻译结果很好，也有较好的泛化能力。</li>
 </ul>
-<h5 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h5>
+<h5 id="conclusion">Conclusion</h5>
 <ul>
 <li>第一个仅依赖注意力的序列转录模型，把所有的循环层替换成了多头注意力机制；</li>
 <li>在机器翻译任务上好且快；</li>
 </ul>
-<h5 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h5>
+<h5 id="introduction">Introduction</h5>
 <ul>
 <li>RNN的缺点：时序信息比较长、难以并行</li>
 </ul>
-<h5 id="background">Background<a class="headerlink" href="#background" title="Permanent link"></a></h5>
+<h5 id="background">Background</h5>
 <p><strong><em>相关工作就是要说明和你类似的工作相关性在哪，区别在哪。</em></strong></p>
 <ul>
 <li>有的工作用CNN代替RNN，这就很难考虑到很长的信息，因为CNN只看每个小小的窗口；但是Transformer可以考虑任意两个<em>像素点</em>之间的相关性。</li>
 <li>CNN有多个输出的通道，希望Transformer也可以做到这一点，于是使用了多头注意力机制。</li>
 </ul>
-<h5 id="model-architecture">Model Architecture<a class="headerlink" href="#model-architecture" title="Permanent link"></a></h5>
+<h5 id="model-architecture">Model Architecture</h5>
 <ul>
 <li>编码器的输入为一个句子<span class="arithmatex">\((x_1,x_2,...,x_n)\)</span>，输出为它们经过处理后的表示<span class="arithmatex">\(z=(z_1,z_2,...,z_n)\)</span>，可以理解为是原始的输入转变为机器可以理解的向量。</li>
 <li>解码器是给输入<span class="arithmatex">\(z\)</span>之后，得到输出<span class="arithmatex">\((y_1,y_2,...,y_m)\)</span>，输出的时候是一个一个输出的（自回归）</li>
@@ -1661,12 +1661,12 @@
 * 训练出来的embedding需要乘上<span class="arithmatex">\(\sqrt{d_{model}}。\)</span>
 <strong>Positional Encoding：Attention并没有考虑时序信息。</strong>
 用一个和embedding后大小相同但是表示位置的向量与embedding相加。</p>
-<h5 id="why-attention">Why Attention<a class="headerlink" href="#why-attention" title="Permanent link"></a></h5>
+<h5 id="why-attention">Why Attention</h5>
 <p><img alt="alt text" src="../image-16.png" >
 第一列是矩阵计算的复杂度，第二列表示self-attention是并行计算，第三列表示不管距离多远，都可以直接计算query和key的相关性。</p>
-<h5 id="training">Training<a class="headerlink" href="#training" title="Permanent link"></a></h5>
+<h5 id="training">Training</h5>
 <p>优化器用的是Adam，学习率结合了衰减和warm-up</p>
-<h5 id="bleu-score">BLEU SCORE<a class="headerlink" href="#bleu-score" title="Permanent link"></a></h5>
+<h5 id="bleu-score">BLEU SCORE</h5>
 <p>BLEU（Bilingual Evaluation Understudy）是机器翻译和自然语言处理领域中常用的自动评估指标，主要用于评估机器生成文本与人类参考文本之间的<strong>相似性</strong>。它的评分系统基于词汇的<strong>重叠情况</strong>，评估生成的翻译与一个或多个参考翻译之间的匹配度。
 计算方式如下：</p>
 <ul>

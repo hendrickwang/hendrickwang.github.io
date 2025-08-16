@@ -1602,10 +1602,10 @@
     <h1>CORAL</h1>
   
 
-<h5 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link"></a></h5>
+<h5 id="abstract">Abstract</h5>
 <p>RAG 是一种通过外部知识检索来提升 LLMs 性能的有效方法，但是当前已有的 RAG 都是单轮的问答，与我们现实中复杂的的多轮问答有所差距，所以本文提出了：CORAL 用于评估多轮对话情境下的RAG。</p>
 <p>它涵盖了 RAG 的三个核心任务：<strong>段落检索、回复生成和引用标注。</strong></p>
-<h5 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h5>
+<h5 id="introduction">Introduction</h5>
 <p>RAG 已成为在问答领域中的一种极具潜力的方法。它将 LLMs 与外部知识检索相结合，提高了生成的回答的质量和准确性。但是当前的单轮 RAG 评测和现实生活中的问答有一定差距：以常用的 GenAI 为例，我们让它们解决一个问题通常是分多步问答、不断改变的上下文和需求来实现的。</p>
 <p>多轮 RAG 需要解决的问题有：（1）处理和合理地舍弃先前无用的、冗余的信息；（2）多轮问答的复杂性可能会降低检索和生成的质量。</p>
 <p>因此，多轮的 RAG benchmark 应当包含这些特性：（1）涉及的领域广泛；（2）知识密集性，上下文中涵盖有深度的需求；（3）回复生成的格式很自由，确保回复全面、丰富；（4）可以评估大模型应对突然的上下文切换的能力；（5）引用标注，确保生成的回答来源透明。
@@ -1623,9 +1623,9 @@ GPT:&quot;...&quot;
 </code></pre></div></td></tr></table></div>
 <p><img alt="alt text" src="../image-1.png" ></p>
 <p>本文还提出了一个统一的框架，测评出了 baseline，并且发现：<strong>微调后的开源 LLM 性能比闭源的大模型好。</strong></p>
-<h5 id="related-work">Related Work<a class="headerlink" href="#related-work" title="Permanent link"></a></h5>
+<h5 id="related-work">Related Work</h5>
 <p><em>检索增强生成和对话式搜索。</em></p>
-<h5 id="coral">CORAL<a class="headerlink" href="#coral" title="Permanent link"></a></h5>
+<h5 id="coral">CORAL</h5>
 <p><strong>数据来源：</strong> 对维基百科上的内容进行去噪（去模版、特殊符号、无效文本...），最终生成了一个包含20,000个高质量页面的清洁数据集。</p>
 <p><strong>数据集的构建：</strong> 共三个阶段：</p>
 <ul>
@@ -1660,7 +1660,7 @@ GPT:&quot;...&quot;
 <p>引用标注：该任务评估方法在生成回复中准确标注信息来源的能力。对于生成回答中的每一个陈述都有一个引用标注<span class="arithmatex">\(C_i=\{c_{i,1}, c_{i,2}, ...\}\)</span>，而每一个<span class="arithmatex">\(c_{i,j}\in P_k\)</span>，用召回率等来评判标注的准确性。</p>
 </li>
 </ul>
-<h5 id="conversational-rag-framework">Conversational RAG Framework<a class="headerlink" href="#conversational-rag-framework" title="Permanent link"></a></h5>
+<h5 id="conversational-rag-framework">Conversational RAG Framework</h5>
 <p>为了解决随着对话不断增加、噪声增多，系统的效率会下降。因此，将<strong>对话压缩</strong>很重要，本文采取了用 LLM 充当压缩函数<span class="arithmatex">\(f\)</span>的方法。</p>
 <p>压缩方法有：</p>
 <ul>
@@ -1674,7 +1674,7 @@ GPT:&quot;...&quot;
 <p>LLM 摘要策略：<span class="arithmatex">\(f_{SUM}(H_k) = \text{LLM abstract}(H_k)\)</span></p>
 </li>
 </ul>
-<h5 id="experiments">Experiments<a class="headerlink" href="#experiments" title="Permanent link"></a></h5>
+<h5 id="experiments">Experiments</h5>
 <p><strong>检性能评估：</strong> 考察了对话式搜索中对话式密集检索（CDR）和对话式查询重写（CQR）。
 <img alt="alt text" src="../image-5.png" ></p>
 <p><strong>回复生成和引用标注评估：</strong>
@@ -1702,10 +1702,10 @@ GPT:&quot;...&quot;
 <p>微调前，使用六轮历史的回复质量相比四轮有所下降，可能是由于较长历史引入了冗余信息。</p>
 </li>
 </ul>
-<h5 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h5>
+<h5 id="conclusion">Conclusion</h5>
 <p>本文提出了一种自动化方法，利用LLM从维基百科页面生成大规模的信息寻求对话。生成的基准数据集CORAL支持评估对话式RAG系统的三项核心任务。此外，本文提出了一个统一的框架，用于标准化和评估多种对话式RAG方法，并在CORAL基准上对这些方法进行了全面评估。</p>
 <p><strong>局限性：</strong>（1）CORAL构建于维基百科之上，而现有LLMs通常已在维基百科和CommonCrawl等语料上进行过训练，使用这些LLM作为生成器可能会在对话式RAG过程中引发数据污染问题，因为它们的训练数据与生成数据集之间存在重叠；（2）CORAL中使用的三种对话压缩策略较为基础。</p>
-<h5 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link"></a></h5>
+<h5 id="tips">Tips</h5>
 <p>对话式查询重写（Conversational Query Rewriting, CQR）模型是一类专门用于改写用户查询的模型，主要应用于多轮对话搜索中。在多轮对话中，用户的查询通常会省略上下文信息，如指代和省略，因此单独处理这些查询可能会引发歧义或降低检索效率。CQR通过将用户的查询重写为独立的、上下文完整的版本，使得每个查询可以单独理解和处理，以更好地与传统的信息检索系统对接。</p>
 
 

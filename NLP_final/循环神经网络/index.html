@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#循环神经网络rnn" class="md-skip">
+        <a href="#rnn" class="md-skip">
           Skip to content
         </a>
       
@@ -675,21 +675,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#循环神经网络rnn" class="md-nav__link">
+  <a href="#rnn" class="md-nav__link">
     循环神经网络（RNN）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#梯度消失和梯度爆炸" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     梯度消失和梯度爆炸
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lstm-架构" class="md-nav__link">
+  <a href="#lstm" class="md-nav__link">
     LSTM 架构
   </a>
   
@@ -1497,21 +1497,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#循环神经网络rnn" class="md-nav__link">
+  <a href="#rnn" class="md-nav__link">
     循环神经网络（RNN）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#梯度消失和梯度爆炸" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     梯度消失和梯度爆炸
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lstm-架构" class="md-nav__link">
+  <a href="#lstm" class="md-nav__link">
     LSTM 架构
   </a>
   
@@ -1536,7 +1536,7 @@
     <h1>Lesson-6 循环神经网络</h1>
   
 
-<h5 id="循环神经网络rnn">循环神经网络（RNN）<a class="headerlink" href="#循环神经网络rnn" title="Permanent link"></a></h5>
+<h5 id="rnn">循环神经网络（RNN）</h5>
 <p>循环神经网络是一类用于处理序列数据的神经网络结构，擅长捕获时间序列或序列数据中的动态信息。</p>
 <p>RNN 的流程如下：</p>
 <ul>
@@ -1565,7 +1565,7 @@
 <p><img alt="alt text" src="../image-13.png" ></p>
 <p>我们发现：<span class="arithmatex">\(W_h\)</span>参与了每个隐藏状态之间的转换，因此：<span class="arithmatex">\(J^{(t)}(\theta)\)</span> 对 <span class="arithmatex">\(W_h\)</span> 的倒数为：</p>
 <div class="arithmatex">\[\frac{\partial J^{(t)}}{\partial W_h} = \sum_{i=1}^t \frac{\partial J^{(i)}}{\partial W_h}\]</div>
-<h5 id="梯度消失和梯度爆炸">梯度消失和梯度爆炸<a class="headerlink" href="#梯度消失和梯度爆炸" title="Permanent link"></a></h5>
+<h5 id="_1">梯度消失和梯度爆炸</h5>
 <p>（1）梯度消失：</p>
 <p><img alt="alt text" src="../image-14.png" ></p>
 <p>不难发现：对于<span class="arithmatex">\(t_1\)</span>来说，较远的梯度信号<span class="arithmatex">\(J^{(4)}(θ)\)</span>比较近的梯度信号<span class="arithmatex">\(J^{(2)}(θ)\)</span>小得多，所以模型的参数更新取决于较近的梯度信号。</p>
@@ -1576,7 +1576,7 @@
 <p>每一层的梯度假设都很大，由于链式法则，下面的层得到反向传播的梯度就会很大，这会导致：会导致梯度下降的step过大，出现bad updates。即因为步子迈的太大而找不到最小值点。</p>
 <p>解决方法：梯度裁剪，很简单的思路：如果梯度的范数大于某个阈值，则在应用SGD更新之前将其缩小（按照缩小比例）：
 <img alt="alt text" src="../image-16.png" ></p>
-<h5 id="lstm-架构">LSTM 架构<a class="headerlink" href="#lstm-架构" title="Permanent link"></a></h5>
+<h5 id="lstm">LSTM 架构</h5>
 <p>长短期记忆网络（LSTM，Long Short-Term Memory）是一种特殊的RNN结构，旨在解决标准RNN在处理长序列时面临的梯度消失和梯度爆炸问题。LSTM通过引入门控机制（即遗忘门、输入门和输出门），能够在更长的时间序列中保持信息。</p>
 <p><img alt="alt text" src="../image-17.png" ></p>
 <p>下面我们逐个介绍 LSTM 的组件：</p>

@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#卷积" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -979,7 +979,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#卷积" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     卷积
   </a>
   
@@ -987,14 +987,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#原则1平移不变性" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     原则1:平移不变性
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#原则2局限性" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     原则2:局限性
   </a>
   
@@ -1006,7 +1006,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#卷积层" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     卷积层
   </a>
   
@@ -1014,7 +1014,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#二维交叉相关" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     二维交叉相关
   </a>
   
@@ -1026,7 +1026,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#二维交叉相关-vs-卷积" class="md-nav__link">
+  <a href="#vs" class="md-nav__link">
     二维交叉相关 VS 卷积
   </a>
   
@@ -1530,7 +1530,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#卷积" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     卷积
   </a>
   
@@ -1538,14 +1538,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#原则1平移不变性" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     原则1:平移不变性
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#原则2局限性" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     原则2:局限性
   </a>
   
@@ -1557,7 +1557,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#卷积层" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     卷积层
   </a>
   
@@ -1565,7 +1565,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#二维交叉相关" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     二维交叉相关
   </a>
   
@@ -1577,7 +1577,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#二维交叉相关-vs-卷积" class="md-nav__link">
+  <a href="#vs" class="md-nav__link">
     二维交叉相关 VS 卷积
   </a>
   
@@ -1602,7 +1602,7 @@
     <h1>Lesson-19</h1>
   
 
-<h4 id="卷积">卷积<a class="headerlink" href="#卷积" title="Permanent link"></a></h4>
+<h4 id="_1">卷积</h4>
 <p><strong>图片识别为什么不用MLP？</strong> 输入的 RGB 图片像素大，输入的元素会非常大，这就导致参数非常多，不可能实现。
 <strong>两个原则：</strong> 平移不变性、局部性
 <strong>重新考察全链接层：</strong></p>
@@ -1615,22 +1615,22 @@
 <li>最后，我们对<span class="arithmatex">\(w\)</span>进行重新索引<span class="arithmatex">\(v_{i,j,a,b}=w_{i,j,i+a,j+b}\)</span>，那么，上式变为：</li>
 </ul>
 <div class="arithmatex">\[h_{i,j} = \sum_{a,b} v_{i,j,a,b}x_{i+a,j+b}\]</div>
-<h5 id="原则1平移不变性">原则1:平移不变性<a class="headerlink" href="#原则1平移不变性" title="Permanent link"></a></h5>
+<h5 id="1">原则1:平移不变性</h5>
 <ul>
 <li><span class="arithmatex">\(x\)</span>的平移会导致<span class="arithmatex">\(h\)</span>的平移，这里可以将<span class="arithmatex">\(\sum_{a,b}v_{i,j,a,b}\)</span>理解为在点<span class="arithmatex">\((i,j)\)</span>处点“识别器”，那么自然地，它会随着<span class="arithmatex">\((i,j)\)</span>的变化而变化</li>
 <li>我们并不希望<span class="arithmatex">\(v\)</span>随着<span class="arithmatex">\((i,j)\)</span>发生变化，即并不依赖于在哪个位置，就像下面这张图，我们判定这个人的穿着打扮符合什么样的特征并不在乎它在图片上的哪个位置：<img alt="alt text" src="../image-17.png" ></li>
 <li>所以，我们让<span class="arithmatex">\(v_{i,j,a,b}=v_{a,b}\)</span>，那么：</li>
 </ul>
 <div class="arithmatex">\[h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b}\]</div>
-<h5 id="原则2局限性">原则2:局限性<a class="headerlink" href="#原则2局限性" title="Permanent link"></a></h5>
+<h5 id="2">原则2:局限性</h5>
 <ul>
 <li>我们考察这个式子：<span class="arithmatex">\(<span class="arithmatex">\(h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b}\)</span>\)</span><span class="arithmatex">\((a,b)\)</span>反应了以<span class="arithmatex">\((i,j)\)</span>为中心向四周扩散的感觉，但是，我们在观察图片的时候，应该只考虑<span class="arithmatex">\((i,j)\)</span>周围的一小片区域，而非全局，即原理的参数我们不要管。</li>
 <li>解决的方法，我们设定一个阈值<span class="arithmatex">\(\Delta\)</span>，当<span class="arithmatex">\(|a|,|b| &gt; \Delta\)</span>时，<span class="arithmatex">\(v_{a,b} = 0\)</span>：</li>
 </ul>
 <div class="arithmatex">\[h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}\]</div>
 <p><strong>总结：</strong> 我们对全连接层进行一些改变，对参数量进行限制和压缩，就实现了变化成卷积层。</p>
-<h4 id="卷积层">卷积层<a class="headerlink" href="#卷积层" title="Permanent link"></a></h4>
-<h5 id="二维交叉相关">二维交叉相关<a class="headerlink" href="#二维交叉相关" title="Permanent link"></a></h5>
+<h4 id="_2">卷积层</h4>
+<h5 id="_3">二维交叉相关</h5>
 <ul>
 <li>计算投射的示意：<img alt="alt text" src="../image-18.png" ></li>
 <li>具体的计算公式：<img alt="alt text" src="../image-19.png" ></li>
@@ -1716,7 +1716,7 @@ plt.axis(&#39;off&#39;)
 plt.show()
 </code></pre></div></td></tr></table></div>
 结果如下图：<img alt="alt text" src="../image-36.png" >
-<h4 id="二维交叉相关-vs-卷积">二维交叉相关 VS 卷积<a class="headerlink" href="#二维交叉相关-vs-卷积" title="Permanent link"></a></h4>
+<h4 id="vs">二维交叉相关 VS 卷积</h4>
 <p><strong>先说结论，就是单纯的反过来，而由于对称性，没有区别。但是我们计算机实现卷积的时候，实际上是实现交叉相关</strong></p>
 <ul>
 <li>二维交叉相关：<span class="arithmatex">\(y_{i,j} = \sum_{a=1}^{h} \sum_{b=1}^{w}w_{a,b}x_{i,j}+b\)</span></li>

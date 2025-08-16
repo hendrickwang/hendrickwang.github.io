@@ -1331,14 +1331,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#一点发散" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     一点发散
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#问题" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     问题：
   </a>
   
@@ -1570,14 +1570,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#一点发散" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     一点发散
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#问题" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     问题：
   </a>
   
@@ -1602,27 +1602,27 @@
     <h1>Abstract Visual Reasoning with Tangram Shapes</h1>
   
 
-<h5 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link"></a></h5>
+<h5 id="abstract">Abstract</h5>
 <ul>
 <li>构建了一个数据集，包含超过1000种拼图方式（使用拼图是参考了神经科学中以拼图作为刺激物的思想）</li>
 <li>这个数据集同时兼顾了视觉和文本上的丰富，不仅包含整体形状的描述，还包括分段图和部件标签</li>
 <li>利用这个数据集来测评多模态模型的抽象能力发现，预训练模型的表现一般，但经过微调的模型表现非常好</li>
 <li>在语言和视觉输入联合编码的情况下，对部件的显式描述有助于人类和模型进行抽象推理</li>
 </ul>
-<h5 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h5>
+<h5 id="introduction">Introduction</h5>
 <p><em>参考是自然语言的核心功能</em>，比如：我们会用“狗“去形容这一系列动物。人类的视觉和语言交互研究中通常会选择一些较为具体的视觉参考对象（如照片），因为这些对象往往只有一个公认的标签。相反地，拼图的含义确实模棱两可的：<img alt="alt text" src="../image.png" >
 本文做了以下工作：
 * 相比于现有行为研究的样本通限于10至20个形状，本文构建了1016个拼图形状，并且本文并不是每个拼图视为一个单一的整体形状，而是用矢量图形表示由原始拼图片段组成的图像（这里更加符合人类的认知）
 * 对每个形状，都可能存在不同的解释和分析，本文共构建了13,404个注释，每个注释都描述了一个完整的对象及其分段的部件
 * 本文利用该数据集评估了ViLT和CLIP视觉推理能力，尤其是概念向抽象形状的泛化能力</p>
-<h5 id="data-collection">Data Collection<a class="headerlink" href="#data-collection" title="Permanent link"></a></h5>
+<h5 id="data-collection">Data Collection</h5>
 <p><em>这里的拼图实际上指的就是七巧板</em>，本文将拼图转换成数字形式（SVG）
 <strong>如何注释？</strong>
 标注者首先看到一个灰度拼图图像并完成句子提示“这个整体形状看起来像<strong><em>_。”；然后，标注者被要求选择一个或多个拼图部件，并完成提示“您选择的部分看起来像</em></strong>_。”这些部件随后会被上色，并且注释会以相应的颜色显示。
 <strong>数据集划分</strong>
 * 分析：两个重叠的数据集：FULL和DENSE：（1）FULL：包括1,016个拼图，每个拼图有10到11个注释（平均=10.11）；（2）DENSE：包括所有74个密集注释拼图的注释，每个拼图至少50个，平均有53.66个注释。
 * 学习实验：创建训练（692个）、开发（125个）、测试（125个）和密集测试集（74个），所有密集注释拼图都在密集测试集中，其余三个集合是随机划分的。</p>
-<h5 id="data-analysis">Data analysis<a class="headerlink" href="#data-analysis" title="Permanent link"></a></h5>
+<h5 id="data-analysis">Data analysis</h5>
 <p><em>30.8%的注释使用了类人的概念（例如，“舞者”），31.2%为非人类的生物概念（例如，“狗”），38.0%则为非生物的概念（例如，“房子”）</em></p>
 <p>在视觉抽象中，存在一个中心问题：<strong>不同人对一个形状的主观理解或歧义程度（Murthy等，2022年），即一些描述比其他描述具有更高的共识性。</strong></p>
 <p>为此，本文定义了三种不同维度上的刻画指标：形状命名分歧（SND）、部件命名分歧（PND）和部件分段一致性（PSA）：
@@ -1635,7 +1635,7 @@
 <li>PND：与SND相似，但是表示的是注释内部每个部分的注释（计算逻辑和SND也一样），本文部件描述的相似性比整体形状描述更高，PND的均值为0.76</li>
 <li>PSA：PSA量化了部件分段的一致性，表示编辑一个分段以匹配另一个分段所需移动的最大片数。我们数据中的PSA均值为5.30，其值呈正态分布。</li>
 </ul>
-<h5 id="visual-reasoning-with-tangrams">Visual Reasoning with Tangrams<a class="headerlink" href="#visual-reasoning-with-tangrams" title="Permanent link"></a></h5>
+<h5 id="visual-reasoning-with-tangrams">Visual Reasoning with Tangrams</h5>
 <p><strong>任务：</strong> 给定一个文本<span class="arithmatex">\(\bar{x}\)</span>和一组图像<span class="arithmatex">\(I={I_1, I_2, ...,I_k}\)</span>，从中选择出和文本匹配的图像<span class="arithmatex">\(I^*\)</span>。任务将表示为将这组图像中的每一个图像都和文本计算相似性分数<span class="arithmatex">\(f(\bar{x},I_i)\)</span>，选出<span class="arithmatex">\(I^*\)</span>使得<span class="arithmatex">\(\max f(\bar{x},I_i)\)</span></p>
 <p>我们的实验测试了 CLIP 和 ViLT ：</p>
 <ul>
@@ -1648,16 +1648,16 @@
 <li>模型的初始预训练权重（PT）下，CLIP和ViLT的表现普遍较差，这可能是因为CLIP的对比预训练目标类似于参考游戏</li>
 <li>微调（FT）显著提高了两种模型的表现</li>
 </ul>
-<h5 id="discussion">Discussion<a class="headerlink" href="#discussion" title="Permanent link"></a></h5>
+<h5 id="discussion">Discussion</h5>
 <ul>
 <li>微调后的模型能否将概念推广到本任务之外的抽象图形上</li>
 <li>预训练模型仍有很大的提升空间，maybe可以做到像人一样不用zero-shot完成任务</li>
 </ul>
-<h5 id="一点发散">一点发散<a class="headerlink" href="#一点发散" title="Permanent link"></a></h5>
+<h5 id="_1">一点发散</h5>
 <p>测试最新的 MLLM ，Finetune MLLM 后再测试；</p>
 <p>比较 Finetune 前后大模型抽象图形<strong>创作</strong>的能力（如何比较？）；</p>
 <p>或者 Finetune 后让大模型做拼图游戏（不局限于七巧板）（用本文定义的矢量模式，方便定义损失），猜测：也许小模型 Finetune 后就可以做的很好，不需要大模型；</p>
-<h4 id="问题">问题：<a class="headerlink" href="#问题" title="Permanent link"></a></h4>
+<h4 id="_2">问题：</h4>
 <p>任务中输入是图片还是SVG，如果喝是PNG的话，部分之间有无明显的边界线</p>
 <p>Finetune 一个 LMM 后让它用整体生成一张图片，来比较和原七巧板拼图的差异</p>
 <p>（1）让模型先生成一个具象的图片（真实的狗），再去生成用七巧板拼成的狗，CoT的思想，RAG的思想（从超大的图像库中寻找到相似的图片），后续可以添加颜色</p>

@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#卷积层中的填充与步幅" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -999,7 +999,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#卷积层中的填充与步幅" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     卷积层中的填充与步幅
   </a>
   
@@ -1007,14 +1007,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#填充" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     填充
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#步幅" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     步幅
   </a>
   
@@ -1503,7 +1503,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#卷积层中的填充与步幅" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     卷积层中的填充与步幅
   </a>
   
@@ -1511,14 +1511,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#填充" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     填充
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#步幅" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     步幅
   </a>
   
@@ -1548,14 +1548,14 @@
     <h1>Lesson-20</h1>
   
 
-<h4 id="卷积层中的填充与步幅">卷积层中的填充与步幅<a class="headerlink" href="#卷积层中的填充与步幅" title="Permanent link"></a></h4>
-<h5 id="填充">填充<a class="headerlink" href="#填充" title="Permanent link"></a></h5>
+<h4 id="_1">卷积层中的填充与步幅</h4>
+<h5 id="_2">填充</h5>
 <p><strong>为什么要填充？</strong> 
 当我们给定卷积核，假设为<span class="arithmatex">\((h, w)\)</span>，输入的矩阵假设原来为<span class="arithmatex">\((H, W)\)</span>，那么会变为<span class="arithmatex">\((H-h+1, W-w+1)\)</span>。假设多用了很多次，就会变得<em>很小</em>而无法再用卷积层了。
 <strong>怎么填充？</strong>
 在输入的外围添加上额外的行和列，如下图所示：<img alt="alt text" src="../image-21.png" >
 我们填充<span class="arithmatex">\(p_h\)</span>行和<span class="arithmatex">\(p_w\)</span>列，一般取<span class="arithmatex">\(p_h = k_h -1\)</span>，<span class="arithmatex">\(p_w = k_w - 1\)</span>，然后对称着填充。</p>
-<h5 id="步幅">步幅<a class="headerlink" href="#步幅" title="Permanent link"></a></h5>
+<h5 id="_3">步幅</h5>
 <p>经过卷积核减小的输出的大小与层数线性相关，如果我们希望把一个较大的图片转换成一个较小的图片，我们可能需要经历很多计算，所以引入步幅来减少计算量。</p>
 <ul>
 <li>步幅指的是窗口滑动的步长</li>

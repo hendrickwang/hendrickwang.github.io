@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#语言模型" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -655,56 +655,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#语言模型" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     语言模型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#n元语法模型n-gram-language-model" class="md-nav__link">
+  <a href="#nn-gram-language-model" class="md-nav__link">
     n元语法模型（n-gram Language Model）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#语言模型中的稀疏性问题" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     语言模型中的稀疏性问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#平滑技术" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     平滑技术
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#n-gram-中的存储问题" class="md-nav__link">
+  <a href="#n-gram" class="md-nav__link">
     n-gram 中的存储问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#神经语言模型" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     神经语言模型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#两种语言模型的对比" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     两种语言模型的对比
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#语言模型的评价指标" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     语言模型的评价指标
   </a>
   
@@ -1532,56 +1532,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#语言模型" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     语言模型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#n元语法模型n-gram-language-model" class="md-nav__link">
+  <a href="#nn-gram-language-model" class="md-nav__link">
     n元语法模型（n-gram Language Model）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#语言模型中的稀疏性问题" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     语言模型中的稀疏性问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#平滑技术" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     平滑技术
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#n-gram-中的存储问题" class="md-nav__link">
+  <a href="#n-gram" class="md-nav__link">
     n-gram 中的存储问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#神经语言模型" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     神经语言模型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#两种语言模型的对比" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     两种语言模型的对比
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#语言模型的评价指标" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     语言模型的评价指标
   </a>
   
@@ -1606,7 +1606,7 @@
     <h1>Lesson-5 语言模型</h1>
   
 
-<h5 id="语言模型">语言模型<a class="headerlink" href="#语言模型" title="Permanent link"></a></h5>
+<h5 id="_1">语言模型</h5>
 <p>概念：语言模型是一种用于生成和理解文本的统计模型或者神经网络模型。主要⽬标是对⽂本数据中的语⾔结构和语法规则进⾏建模，以便计算机可以更好地理解和⽣成⾃然语⾔⽂本。</p>
 <p>给定上下文，计算一个词出现的概率，形式化来说，就是给定一个序列：<span class="arithmatex">\(x^{(1)},x^{(2)},...,x^{(t)}\)</span>，我们计算出：</p>
 <div class="arithmatex">\[P(x^{(t+1)}|x^{(t)},...,x^{(2)},x^{(1)})\]</div>
@@ -1614,7 +1614,7 @@
 <div class="arithmatex">\[P(John|&lt;BOS&gt;)=\frac{&lt;BOS&gt; John\text{出现的次数}}{&lt;BOS&gt; * \text{出现的次数}}\]</div>
 <p>那么，如何计算一段话出现的概率呢？</p>
 <div class="arithmatex">\[P(&lt;BOS&gt;John read a book&lt;EOS&gt;)=P(John|&lt;BOS&gt;)P(read|John) P(a| read) P(book|a)P(&lt;EOS&gt;|book)\]</div>
-<h5 id="n元语法模型n-gram-language-model">n元语法模型（n-gram Language Model）<a class="headerlink" href="#n元语法模型n-gram-language-model" title="Permanent link"></a></h5>
+<h5 id="nn-gram-language-model">n元语法模型（n-gram Language Model）</h5>
 <p>n-gram 是由连续的 n 个连续单词组成的字符串：</p>
 <ul>
 <li>unigrams: “the”, “students”, “opened”, ”their”</li>
@@ -1629,7 +1629,7 @@
 <div class="arithmatex">\[P(s) = \prod_{i=1}^lP(w_i|w_{i-n+1}^{i-1})\]</div>
 <p>其中，<span class="arithmatex">\(w_{i-n+1}^{i-1}=w_{i-n+1}w_{i-n+2}...w_{i-2}w_{i-1}\)</span></p>
 <p>定义 n 元语法模型的核心动机是为了降低计算复杂度、缓解数据稀疏问题。</p>
-<h5 id="语言模型中的稀疏性问题">语言模型中的稀疏性问题<a class="headerlink" href="#语言模型中的稀疏性问题" title="Permanent link"></a></h5>
+<h5 id="_2">语言模型中的稀疏性问题</h5>
 <p>语言模型中的稀疏性问题指：在语言建模的过程中，由于语料库的有限性，很多可能的词序列并没有在训练资料中出现过，而导致语言模型无法对其概率进行估计。</p>
 <p>稀疏性问题的表现：</p>
 <ul>
@@ -1637,7 +1637,7 @@
 <li>罕见词问题：一些低频词在训练数据中出现的次数不足，导致模型难以学到合理的概率分布</li>
 <li>长尾分布：大多数词的出现频率较低，仅少数高频词占据了语料库的主要部分</li>
 </ul>
-<h5 id="平滑技术">平滑技术<a class="headerlink" href="#平滑技术" title="Permanent link"></a></h5>
+<h5 id="_3">平滑技术</h5>
 <p>平滑技术的基本思想：调整概率分布：是零概率增加，非零概率降低，提示系统的性能。</p>
 <p>具体的平滑方法有：</p>
 <p>（1）加1法（Additive smoothing）：</p>
@@ -1660,21 +1660,21 @@
 <p>我们发现，出现0次的词序列的频率为：<span class="arithmatex">\(P = \frac{N_1/N_0}{N}\)</span></p>
 <p>上面这种调整方式，可以保证最后所有的概率之和仍然为1。同时，在实际操作中，一般会设定一个阈值，出现次数大于这个阈值的，不作调整，小于这个阈值的，进行调整。</p>
 <p>缺点：对高频事件的调整可能不够精确</p>
-<h5 id="n-gram-中的存储问题">n-gram 中的存储问题<a class="headerlink" href="#n-gram-中的存储问题" title="Permanent link"></a></h5>
+<h5 id="n-gram">n-gram 中的存储问题</h5>
 <p>n-gram 模型需要存储所有可能的 n-gram 和其对应的频率或概率，其存储量的增长是随着 n 的增大而呈指数级增长的。</p>
 <p>那么，一个直接简单的方法就是：控制 n 的大小。</p>
-<h5 id="神经语言模型">神经语言模型<a class="headerlink" href="#神经语言模型" title="Permanent link"></a></h5>
+<h5 id="_4">神经语言模型</h5>
 <p>输入层：<span class="arithmatex">\(n-1\)</span>个词向量的串接：</p>
 <p><img alt="alt text" src="../image-9.png" ></p>
 <p>隐藏层：<span class="arithmatex">\(y = f(Wx+b)\)</span></p>
 <p>其中：（1）<span class="arithmatex">\(f\)</span>为激励函数：tanh 或者 sigmoid；（2）<span class="arithmatex">\(x\)</span>为输入向量；（3）<span class="arithmatex">\(W\)</span>为参数矩阵；（4）<span class="arithmatex">\(b\)</span>为偏置向量；（5）<span class="arithmatex">\(y\)</span>为隐藏层的输出。</p>
 <p><img alt="alt text" src="../image-10.png" ></p>
 <p>输出层：<span class="arithmatex">\(p_i = softmax(y_i)=\frac{e^{y_i}}{\sum_{j=1}^V e^{y_j}}\)</span>，那么，每个元素都会转变成一个0到1之间的数（其这些数之和为1）（我们把它视为概率），那么最大的那个概率对应词表中的词，就是我们预测的下一个词。</p>
-<h5 id="两种语言模型的对比">两种语言模型的对比<a class="headerlink" href="#两种语言模型的对比" title="Permanent link"></a></h5>
+<h5 id="_5">两种语言模型的对比</h5>
 <p>神经语言模型没有稀疏性问题，也不需要存储下来所有的 n-gram。</p>
 <p>但是，神经语言模型在处理长文本时可能会遇到固定窗口过小的问题（由于梯度消失和梯度爆炸问题，它们在实际训练中往往无法有效捕捉远距离的依赖）。</p>
 <p><img alt="alt text" src="../image-11.png" ></p>
-<h5 id="语言模型的评价指标">语言模型的评价指标<a class="headerlink" href="#语言模型的评价指标" title="Permanent link"></a></h5>
+<h5 id="_6">语言模型的评价指标</h5>
 <p>（1）困惑度（Perplexity）：Perplexity（困惑度）是评估语言模型效果的一个常用指标，尤其是在统计语言模型和神经语言模型中。它通常用来衡量语言模型对给定文本的预测能力，表示模型对文本序列的“不确定性”或“困惑程度”。</p>
 <p>交叉熵是它的指数：</p>
 <div class="arithmatex">\[Perplexity=exp(J(\theta)) = exp(-\frac{1}{N}\sum_{i=1}^NP(w_i|w_1w_2...w_{i-1}))\]</div>

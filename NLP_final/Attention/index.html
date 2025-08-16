@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#我们为什么需要-attention" class="md-skip">
+        <a href="#attention" class="md-skip">
           Skip to content
         </a>
       
@@ -715,21 +715,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#我们为什么需要-attention" class="md-nav__link">
+  <a href="#attention" class="md-nav__link">
     我们为什么需要 Attention？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#attention-的流程" class="md-nav__link">
+  <a href="#attention_1" class="md-nav__link">
     Attention 的流程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#attention-的变种" class="md-nav__link">
+  <a href="#attention_2" class="md-nav__link">
     Attention 的变种
   </a>
   
@@ -1497,21 +1497,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#我们为什么需要-attention" class="md-nav__link">
+  <a href="#attention" class="md-nav__link">
     我们为什么需要 Attention？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#attention-的流程" class="md-nav__link">
+  <a href="#attention_1" class="md-nav__link">
     Attention 的流程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#attention-的变种" class="md-nav__link">
+  <a href="#attention_2" class="md-nav__link">
     Attention 的变种
   </a>
   
@@ -1536,7 +1536,7 @@
     <h1>Lesson-8 Attention</h1>
   
 
-<h5 id="我们为什么需要-attention">我们为什么需要 Attention？<a class="headerlink" href="#我们为什么需要-attention" title="Permanent link"></a></h5>
+<h5 id="attention">我们为什么需要 Attention？</h5>
 <p>Attention 是为了解决传统序列模型在处理长序列时的信息压缩瓶颈和长距离依赖难以捕获问题而提出的。</p>
 <p>它通过对输入序列中每个位置的动态加权，允许模型灵活地捕获全局信息，显著提升了性能和效率。</p>
 <p>换言之：</p>
@@ -1545,7 +1545,7 @@
 <li>缓解梯度消失问题：Attention通过分配不同的权重给输入序列的各个部分，使得模型能够更加关注与目标序列相关的部分，有助于缓解梯度消失问题</li>
 <li>提供了一定的可解释性：Attention的权重是可视化的，它能够提供对模型决策过程的直观理解</li>
 </ul>
-<h5 id="attention-的流程">Attention 的流程<a class="headerlink" href="#attention-的流程" title="Permanent link"></a></h5>
+<h5 id="attention_1">Attention 的流程</h5>
 <ul>
 <li>首先，Encoder 输出了一系列隐藏状态 <span class="arithmatex">\(h_1,h_2,...,h_N\)</span>（其中<span class="arithmatex">\(N\)</span>为输入序列的长度）；</li>
 <li>Decoder 也输出了当前时间步的隐藏状态<span class="arithmatex">\(s_t\)</span></li>
@@ -1563,7 +1563,7 @@
 <p>一般性理解：</p>
 <p>从更广泛的角度来看，Attention机制本质上是在序列处理任务中通过动态加权的方式关注输入序列的不同部分。它允许模型在每个时间步根据当前状态灵活选择与当前任务相关的信息，因此可以更有效地捕捉长距离依赖关系。与传统的固定长度上下文向量相比，Attention的优势在于它能够根据具体任务自适应地选择信息，从而提高模型的表达能力和翻译质量。</p>
 <p>通过Attention机制，模型能够对输入的每个部分进行不同程度的关注，尤其是在处理长序列、复杂句子结构时，能够显著提高模型的性能。</p>
-<h5 id="attention-的变种">Attention 的变种<a class="headerlink" href="#attention-的变种" title="Permanent link"></a></h5>
+<h5 id="attention_2">Attention 的变种</h5>
 <p>这里，Attention 的变种都出现在如何计算 Attention Score 中：</p>
 <ul>
 <li>Multiplicative Attention：在点积的基础上，引入了一个权重矩阵进行变换，来增强灵活性：</li>

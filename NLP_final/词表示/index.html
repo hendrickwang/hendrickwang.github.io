@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#首先什么是词表示" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -575,28 +575,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#首先什么是词表示" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     首先，什么是词表示？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#one-hot-编码是什么" class="md-nav__link">
+  <a href="#one-hot" class="md-nav__link">
     one-hot 编码是什么？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#什么是-word2vec" class="md-nav__link">
+  <a href="#word2vec" class="md-nav__link">
     什么是 Word2vec？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#如何评价词向量" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     如何评价词向量？
   </a>
   
@@ -1504,28 +1504,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#首先什么是词表示" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     首先，什么是词表示？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#one-hot-编码是什么" class="md-nav__link">
+  <a href="#one-hot" class="md-nav__link">
     one-hot 编码是什么？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#什么是-word2vec" class="md-nav__link">
+  <a href="#word2vec" class="md-nav__link">
     什么是 Word2vec？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#如何评价词向量" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     如何评价词向量？
   </a>
   
@@ -1550,14 +1550,14 @@
     <h1>Lesson-1 词向量</h1>
   
 
-<h5 id="首先什么是词表示">首先，什么是词表示？<a class="headerlink" href="#首先什么是词表示" title="Permanent link"></a></h5>
+<h5 id="_1">首先，什么是词表示？</h5>
 <p>词表示就是把文本中的单词转换成数值向量，以便计算机来理解和处理文本。</p>
 <p>具体来说，词向量就是把语义信息编码成向量。那么，我们希望：语义相似的文本在向量空间中的距离更近，而具有不同语义的本文在向量空间中的距离更远。</p>
 <p>在这种情况下，我们希望通过词向量在向量空间中的位置来捕捉不同词之间的语义关系。</p>
-<h5 id="one-hot-编码是什么">one-hot 编码是什么？<a class="headerlink" href="#one-hot-编码是什么" title="Permanent link"></a></h5>
+<h5 id="one-hot">one-hot 编码是什么？</h5>
 <p>one-hot Encoding 被称为独热编码，是一种非常传统的词语表示方式。它将每个词语表示成一个非常稀疏的向量，向量的维度大小和词表的大小相同，每个向量中只有一个位置（这个位置就是该词在词表中的位置）取值为1，剩下位置取值都为0。</p>
 <p>显然，它的缺点有：维度太大、表示稀疏，无法反映词与词之间的语义关系。</p>
-<h5 id="什么是-word2vec">什么是 Word2vec？<a class="headerlink" href="#什么是-word2vec" title="Permanent link"></a></h5>
+<h5 id="word2vec">什么是 Word2vec？</h5>
 <p>具体内容参加我完整解读的博客：<a href="https://hendrickwang.github.io/NLP/Stanford%20CS224n%20Lecture-1/">杂谈·Word2Vec</a></p>
 <p>Word2vec 是一种用于自然语言处理中词嵌入的模型，通过将单词表示为低维稠密向量来保留词语之间的语义关系。</p>
 <p>具体来说，对于文本中的每个单词，它都具有两个向量，一个是中心词向量，一个是文本词向量。然后，考虑全局文本，我们定义了 Likelihood：</p>
@@ -1571,7 +1571,7 @@
 <li>CBOW：目标是通过上下文词预测中心词。输入上下文单词的词向量，将上下文单词的向量取平均，使用 Softmax 回归预测中心词的概率分布。优化目标是最大化正确中心词的概率。计算效率高，适合小型数据集。但是可能会忽略某些细粒度的上下文信息。</li>
 <li>Skip-Gram：目标是通过中心词预测上下文词。输入为中心单词的词向量。通过模型预测窗口内每个上下文单词的概率分布，优化目标是最大化所有上下文单词的概率。表现更灵活，适合大型语料库。但是计算成本较高，因为需要为每个中心词预测多个上下文词。</li>
 </ul>
-<h5 id="如何评价词向量">如何评价词向量？<a class="headerlink" href="#如何评价词向量" title="Permanent link"></a></h5>
+<h5 id="_2">如何评价词向量？</h5>
 <p>两种评价方法：</p>
 <ul>
 <li>内在评价：侧重于衡量词向量的语义和语言学质量，通常通过预定义的标准任务或数据集进行评估。</li>

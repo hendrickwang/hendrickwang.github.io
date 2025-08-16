@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -1249,7 +1249,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     前言
   </a>
   
@@ -1521,7 +1521,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     前言
   </a>
   
@@ -1589,27 +1589,27 @@
   
 
 <p>原文链接：<a href="https://arxiv.org/abs/2103.00020">Learning Transferable Visual Models From Natural Language Supervision</a></p>
-<h5 id="前言">前言<a class="headerlink" href="#前言" title="Permanent link"></a></h5>
+<h5 id="_1">前言</h5>
 <ul>
 <li>迁移学习能力非常好，在很多图片分类任务上zero-shot推理做的非常好、</li>
 <li>怎么训练的呢？在文字和图片上进行对比学习，需要大量的数据</li>
 <li>没有分类头，摆脱了category label的限制</li>
 <li>利用了自然语言的监督信号</li>
 </ul>
-<h5 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link"></a></h5>
+<h5 id="abstract">Abstract</h5>
 <ul>
 <li>SOTA的模型都是已经有定义好的固定类别，限制了模型的泛化能力</li>
 <li>从自然语言里学习监督信号</li>
 <li>数据集（图片-文本对）大小为4亿</li>
 <li>分类可以迁移到新的类别，在30个实验上表现的很好</li>
 </ul>
-<h5 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h5>
+<h5 id="introduction">Introduction</h5>
 <ul>
 <li>推进了前面的几个类似工作，CLIP的规模更大：数据规模大，模型规模大 </li>
 <li>CLIP：Contrastive Language-Image Pre-training</li>
 <li>视觉方面尝试了8个模型，发现模型越大，迁移学习的效果会更好</li>
 </ul>
-<h5 id="approach">Approach<a class="headerlink" href="#approach" title="Permanent link"></a></h5>
+<h5 id="approach">Approach</h5>
 <p><strong>方法的核心是利用自然语言的监督信号。</strong> 
 好处：（1）数据更好收集，无需标注，且输入为图片-文本对，文本的自由度变大；（2）学习到的特征是多模态的特征，会很好地做zero-shot的迁移。
 <strong>提出了数据集WebImageText。</strong>
@@ -1623,7 +1623,7 @@
 <strong>一些细节：</strong>（1）数据集足够大让模型不会overfitting；（2）最后的投射采用的是线性的投射层（非线性和线性并没有太大区别）。 
 <strong>怎么训练？</strong>
 视觉方面，5个ResNet和3个VisionTransformer，训练了32个epoch，Adam为optimizer；也有很多工程上的优化：混精度、gradient checkpoint...</p>
-<h5 id="experiment">Experiment<a class="headerlink" href="#experiment" title="Permanent link"></a></h5>
+<h5 id="experiment">Experiment</h5>
 <p>动机：在面对下游任务时，不需要再用有标记的数据进行finetune。
 <strong>分类任务zero-shot的流程如下：</strong><img alt="alt text" src="../image-2.png" >
 （1）首先，“感兴趣的类别”和原本的prompt template结合形成一个个句子输入文本编码器进行特征提取，同时图片也进入图像编码器进行特征提取；
@@ -1643,9 +1643,9 @@ baseline：Linear Probe on ResNet
 <strong>表征学习：</strong> 将下游任务所有的数据进行CILP，这就可以和之前特征学习的方法进行公平对比了。一般有两种方法：（1）linear probe：将预训练好的模型冻住，然后再训练一个分类头；（2）finetune：整个网络全放开。本文只采用了第一种方法，因为CLIP就是希望找到<strong>一个和下游任务无关的通用模型，</strong> 且linear probe才能更好的反应<strong>预训练模型</strong>的好坏。
 <strong>模型的泛化性：</strong> 当存在数据偏移的时候，CLIP仍然表现的很稳健。
 <img alt="alt text" src="../image-6.png" ></p>
-<h5 id="comparison-to-human-performance">Comparison to Human Performance<a class="headerlink" href="#comparison-to-human-performance" title="Permanent link"></a></h5>
+<h5 id="comparison-to-human-performance">Comparison to Human Performance</h5>
 <p>对于人难的类别，对CLIP也很难。这可能与现实生活中数据的分布有关。</p>
-<h5 id="limitation">Limitation<a class="headerlink" href="#limitation" title="Permanent link"></a></h5>
+<h5 id="limitation">Limitation</h5>
 <ul>
 <li>CLIP的性能强，但本文的baseline是ResNet，并不是SOTA。从扩大规模提升CLIP性能的角度，需要的计算资源要x1000，这消耗就太大了。</li>
 <li>CLIP在一些任务上表现的并不好：（1）细分类的任务 ；（2）无法处理抽象的问题：比如图中有多少人。它并不是一个万能的方法；</li>

@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#成分句法树" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -615,35 +615,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#成分句法树" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     成分句法树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#依存句法树" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     依存句法树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#成分句法树-vs-依存句法树" class="md-nav__link">
+  <a href="#vs" class="md-nav__link">
     成分句法树 VS 依存句法树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#上下文无关文法" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     上下文无关文法
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#内向算法" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     内向算法
   </a>
   
@@ -1511,35 +1511,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#成分句法树" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     成分句法树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#依存句法树" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     依存句法树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#成分句法树-vs-依存句法树" class="md-nav__link">
+  <a href="#vs" class="md-nav__link">
     成分句法树 VS 依存句法树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#上下文无关文法" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     上下文无关文法
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#内向算法" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     内向算法
   </a>
   
@@ -1564,7 +1564,7 @@
     <h1>Lesson-3 句法分析</h1>
   
 
-<h5 id="成分句法树">成分句法树<a class="headerlink" href="#成分句法树" title="Permanent link"></a></h5>
+<h5 id="_1">成分句法树</h5>
 <p>成分句法树是一种基于短语结构的句法表示方法，用于表示句子的句法结构。成分句法树将句子分解为迭代嵌套的句法成分，通过树形结构展示这些成分之间的层次关系。</p>
 <p>基本概念：</p>
 <p>（1）句法成分：</p>
@@ -1640,7 +1640,7 @@
 <li>词性带来的歧义：同一个单词可能属于不同的词性</li>
 <li>短语边界的歧义：不同的短语边界划分会影响句子的解析</li>
 </ul>
-<h5 id="依存句法树">依存句法树<a class="headerlink" href="#依存句法树" title="Permanent link"></a></h5>
+<h5 id="_2">依存句法树</h5>
 <p>依存句法树（Dependency Parse Tree）是另一种用于表示句子结构的形式。与成分句法树不同，依存句法树专注于描述句子中词与词之间的语法依赖关系。它以树的形式表示每个单词（节点）之间的依赖关系，其中根节点是句子的核心词（通常是谓语动词）。</p>
 <p>特点：</p>
 <ul>
@@ -1663,10 +1663,10 @@
    │       └── the (det)
 </code></pre></div></td></tr></table></div>
 <p>具体的依存含义为：nsubj 是主语依赖关系；det 是限定词依赖关系；prep 是介词依赖关系；pobj 是介词宾语依赖关系。</p>
-<h5 id="成分句法树-vs-依存句法树">成分句法树 VS 依存句法树<a class="headerlink" href="#成分句法树-vs-依存句法树" title="Permanent link"></a></h5>
+<h5 id="vs">成分句法树 VS 依存句法树</h5>
 <p>成分句法树：（1）节点是词、短语和句子；（2）边表示从属关系；（3）嵌套结构的树</p>
 <p>依存句法树：（1）节点是词；（2）边是依存关系；（3）是多叉树</p>
-<h5 id="上下文无关文法">上下文无关文法<a class="headerlink" href="#上下文无关文法" title="Permanent link"></a></h5>
+<h5 id="_3">上下文无关文法</h5>
 <p>上下文无关文法包含以下部分：</p>
 <ul>
 <li>终结符：句子的基本单元（如单词）</li>
@@ -1752,7 +1752,7 @@ V → &quot;slept&quot;  [P=0.4]
 <p>（1）给定一个句子<span class="arithmatex">\(W=w_1…w_n\)</span>和文法<span class="arithmatex">\(G\)</span>，如何快速计算概率<span class="arithmatex">\(P(W|G)\)</span>：这个句子有多种可能性，我们需要计算出符合文法的所有可能性；</p>
 <p>（2）给定一个句子<span class="arithmatex">\(W=w_1…w_n\)</span>和文法<span class="arithmatex">\(G\)</span>，选择出概率最大的句法树（类似解码）；</p>
 <p>（3）给定一个句子<span class="arithmatex">\(W=w_1…w_n\)</span>和文法<span class="arithmatex">\(G\)</span>，如何调整文法使句子的概率最大（训练出<span class="arithmatex">\(G\)</span>的过程）。</p>
-<h5 id="内向算法">内向算法<a class="headerlink" href="#内向算法" title="Permanent link"></a></h5>
+<h5 id="_4">内向算法</h5>
 <p>针对上面 PCFG 的问题（2），我们使用内向算法。</p>
 <p>伪代码如下：
 </p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

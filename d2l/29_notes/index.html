@@ -1435,21 +1435,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#残差块" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     残差块
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#resnet-架构" class="md-nav__link">
+  <a href="#resnet_1" class="md-nav__link">
     ResNet 架构
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#总结" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     总结
   </a>
   
@@ -1474,24 +1474,24 @@
     <h1>29 notes</h1>
   
 
-<h5 id="resnet">ResNet<a class="headerlink" href="#resnet" title="Permanent link"></a></h5>
+<h5 id="resnet">ResNet</h5>
 <p><em>动机：网络更深、加更多的层会让模型更好吗？</em> 答案是不一定的。</p>
 <p>模型有时候会出现“偏差”，导致随着网络更深、函数更多时，反而离最优点更远了。</p>
 <p>因此，引入了<strong>残差块</strong>。</p>
-<h5 id="残差块">残差块<a class="headerlink" href="#残差块" title="Permanent link"></a></h5>
+<h5 id="_1">残差块</h5>
 <p>残差块的结构如下，添加了一个快速通道，实现了<span class="arithmatex">\(f(x)=x+g(x)\)</span>的结构，保证了：即使<span class="arithmatex">\(g(x)\)</span>什么都没学到，<span class="arithmatex">\(f(x)\)</span>也至少可以实现和它的输入<span class="arithmatex">\(x\)</span>一样的功能。
 <img alt="alt text" src="../image-42.png" ></p>
 <p>从函数的角度理解，大网络<span class="arithmatex">\(f(x)\)</span>中嵌入了小网络<span class="arithmatex">\(x\)</span>。</p>
 <p>具体的实现细节如下图，即先卷积，再归一化，再激活函数，再卷积，再归一化，然后和输入相架后一起输入激活函数中。
 <img alt="alt text" src="../image-43.png" ></p>
 <p>右侧的图中<span class="arithmatex">\(x\)</span>经过卷积再加到<span class="arithmatex">\(g(x)\)</span>上是因为：经过网络后，<span class="arithmatex">\(x\)</span>和<span class="arithmatex">\(g(x)\)</span>的尺寸可能会不一样了。</p>
-<h5 id="resnet-架构">ResNet 架构<a class="headerlink" href="#resnet-架构" title="Permanent link"></a></h5>
+<h5 id="resnet_1">ResNet 架构</h5>
 <p>第一块就是步幅为2的ResNet块（导致高宽减半），后面跟着若干个保持高宽不变的ResNet块。</p>
 <p>总体架构如下：
 <img alt="alt text" src="../image-44.png" ></p>
 <p>输入后先进入<span class="arithmatex">\(7\times7\)</span>的卷积，然后Batch Norm。然后是<span class="arithmatex">\(3\times3\)</span>的MaxPooling，随即进入一系列ResNet块，最后被输入全局平均Pooling，再输入全连接层后被输出。</p>
 <p>后面的网络也有着这样的架构，只不过会修改中间的网络，但初始的卷积和MaxPooling以及最后的全局Pooling和全连接的架构会保持。</p>
-<h5 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link"></a></h5>
+<h5 id="_2">总结</h5>
 <ul>
 <li>残差块可以使很深的网络更好地被训练</li>
 </ul>

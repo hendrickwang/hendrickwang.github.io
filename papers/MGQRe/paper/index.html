@@ -1481,11 +1481,11 @@
     <h1>Paper</h1>
   
 
-<h5 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link"></a></h5>
+<h5 id="abstract">Abstract</h5>
 <p>视觉语言检索（VLR）使用文本/图像作为查询以检索相应的图像/文本，被广泛应用。然而，当查询到内容涉及到模糊的概念时，表现出来的性能不佳，并且现有模型都忽略了模型偏好，也导致了性能的降低。</p>
 <p>本文提出了一种多模态大语言模型引导的查询重写器（Multimodal LLM-Guided Query Rewriter，MGQRe）来进行查询优化。MGQRe 首先利用 MLLM 识别检索模型的弱点并进行针对性的迭代优化，以捕获模型的表达偏好。随后，本文开发了一个可训练的重写器，通过三步调优策略（监督微调、偏好学习和强化学习）学习这种偏好知识，实现提升性能。</p>
 <p>在多个 VLR 基准测试中的实验结果表明，MGQRe 展现出了通用性和迁移性。</p>
-<h5 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h5>
+<h5 id="introduction">Introduction</h5>
 <p>当前 VLR 的关注点都主要集中于如何在一个共享的语义空间中<strong>对齐</strong>文本和图像模态。</p>
 <p>我们知道，<em>物品类</em>的词很方便进行文本和图像的对齐，但是某些模糊的<em>副词、形容词等</em>就很难和文本实现对齐，比如我们检索“期待”的时候，很难说检索出来的图像中哪些特征满足这个文本的特征，这主要归因于数据的异质性。</p>
 <p>这种问题就会引起检索模型性能的下降，因此，通常需要利用一个重写器来优化查询中的复杂概念。然而，传统的重写方法难以根据检索模型的偏好有效地调整查询（比如下面图中的例子，传统重写后并没有为检索提供太大的帮助，因为它又引入了一个新的模糊词“excitement”）。</p>
@@ -1519,7 +1519,7 @@
 <p>实验表明，本文提出的方法显著优于其他查询优化方法</p>
 </li>
 </ul>
-<h5 id="related-work">Related Work<a class="headerlink" href="#related-work" title="Permanent link"></a></h5>
+<h5 id="related-work">Related Work</h5>
 <p><strong>VLR</strong> 主要目标是建立视觉模态和文本模态之间的对齐关系，当前主流的方法有三种：</p>
 <ul>
 <li>
@@ -1534,7 +1534,7 @@
 </ul>
 <p><strong>提示工程</strong>也成为一种优化查询以便多模态模型更好理解的重要技术。</p>
 <p>现在也存在<strong>利用知识库进行查询增强</strong>的方法，但是它们主要针对图像分类和目标检测，这些粗粒度方法难以处理包含多个实体和细粒度交互的复杂文本查询。而本文提出了针对多模态检索的细粒度查询优化方案。</p>
-<h5 id="methodology">Methodology<a class="headerlink" href="#methodology" title="Permanent link"></a></h5>
+<h5 id="methodology">Methodology</h5>
 <p>MGQRe 的框架如下图所示，我将讲解每步骤的具体内容。</p>
 <p><img alt="alt text" src="../image-1.png" ></p>
 <p><strong>数据集的构建：</strong></p>
@@ -1557,7 +1557,7 @@
 <p>之后，采用近端策略优化（PPO）算法优化期望奖励，进一步提升重写器的性能。</p>
 <p><strong>重写器与 VLR 的整合：</strong></p>
 <p>本文将训练好的重写器集成到 CLIP 框架中：在 CLIP 微调期间，冻结重写器并随机以一定概率对查询进行重写；推理时，对于输入的文本查询，利用重写器生成优化后的查询。优化后的查询通过文本编码器获取文本特征，与候选图像的特征计算相似度得分，按降序召回图像。</p>
-<h5 id="experiment">Experiment<a class="headerlink" href="#experiment" title="Permanent link"></a></h5>
+<h5 id="experiment">Experiment</h5>
 
 
 

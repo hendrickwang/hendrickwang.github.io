@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#首先是一个-ner-的简单神经网络" class="md-skip">
+        <a href="#ner" class="md-skip">
           Skip to content
         </a>
       
@@ -595,21 +595,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#首先是一个-ner-的简单神经网络" class="md-nav__link">
+  <a href="#ner" class="md-nav__link">
     首先是一个 NER 的简单神经网络
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#随机梯度下降" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     随机梯度下降
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#梯度" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     梯度
   </a>
   
@@ -623,14 +623,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#链式法则" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     链式法则
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#反向传播" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     反向传播
   </a>
   
@@ -1518,21 +1518,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#首先是一个-ner-的简单神经网络" class="md-nav__link">
+  <a href="#ner" class="md-nav__link">
     首先是一个 NER 的简单神经网络
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#随机梯度下降" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     随机梯度下降
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#梯度" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     梯度
   </a>
   
@@ -1546,14 +1546,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#链式法则" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     链式法则
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#反向传播" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     反向传播
   </a>
   
@@ -1578,21 +1578,21 @@
     <h1>Lesson-2 神经网络</h1>
   
 
-<h5 id="首先是一个-ner-的简单神经网络">首先是一个 NER 的简单神经网络<a class="headerlink" href="#首先是一个-ner-的简单神经网络" title="Permanent link"></a></h5>
+<h5 id="ner">首先是一个 NER 的简单神经网络</h5>
 <p>NER 是什么？中文为命名实体识别，就是从文本中识别并提取特定类型的实体，如人名、地名、时间等。</p>
 <p>NER 模型的 Idea：基于上下文词分类中心词，训练一个二分类器来判别中心词 {yes/no} 属于某种实体。因此，神经网络的搭建非常简单：</p>
 <p><img alt="alt text" src="../image.png" ></p>
 <p>计算流程即为：<span class="arithmatex">\(h=f(Wx+b)\)</span>，然后<span class="arithmatex">\(s=u^Th\)</span>即可</p>
-<h5 id="随机梯度下降">随机梯度下降<a class="headerlink" href="#随机梯度下降" title="Permanent link"></a></h5>
+<h5 id="_1">随机梯度下降</h5>
 <p>公式如下：</p>
 <div class="arithmatex">\[\theta^{new} = \theta^{old} - \alpha \nabla_{\theta}J(\theta)\]</div>
 <p>其中，<span class="arithmatex">\(\alpha\)</span> 是学习率。</p>
 <p>如何计算梯度<span class="arithmatex">\(\nabla_{\theta}J(\theta)\)</span>的？使用反向传播算法。</p>
-<h5 id="梯度">梯度<a class="headerlink" href="#梯度" title="Permanent link"></a></h5>
+<h5 id="_2">梯度</h5>
 <p>草率一点理解，梯度可以理解为导数。</p>
 <p>这里只说一下多变量的情况：</p>
 <p>设<span class="arithmatex">\(f(X)=f(x_1,x_2,...,x_n)\)</span>，那么：梯度为<span class="arithmatex">\(\frac{\partial f}{\partial X} = [\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2},...,\frac{\partial f}{\partial x_n}]\)</span></p>
-<h5 id="jacobian-matrix">Jacobian Matrix<a class="headerlink" href="#jacobian-matrix" title="Permanent link"></a></h5>
+<h5 id="jacobian-matrix">Jacobian Matrix</h5>
 <p>Jacobian Matrix（雅可比矩阵） 是数学和工程中一种重要的工具，用于描述多变量函数的局部变化关系。它是一个由函数的一阶偏导数组成的矩阵。</p>
 <p>具体来说，我们有<span class="arithmatex">\(m\)</span>个函数和<span class="arithmatex">\(n\)</span>个变量：<span class="arithmatex">\(f(X)=[f_1(X),f_2(X),...,f_m(X)]^T\)</span>，其中，<span class="arithmatex">\(X=[x_1,x_2,...,x_n]^T\)</span>。</p>
 <p>那么，Jacobian Matrix 会是一个<span class="arithmatex">\(m\times n\)</span>的矩阵，如下：</p>
@@ -1608,9 +1608,9 @@
 <li>Jacobian 的每一行描述了对应输出函数<span class="arithmatex">\(f_i\)</span>的梯度，表示该函数在输入空间中的变化趋势。</li>
 <li>Jacobian 的每一列描述了对应输入变量<span class="arithmatex">\(x_j\)</span>对所有输出函数的影响。</li>
 </ul>
-<h5 id="链式法则">链式法则<a class="headerlink" href="#链式法则" title="Permanent link"></a></h5>
+<h5 id="_3">链式法则</h5>
 <p>很简单的内容：如果<span class="arithmatex">\(h=f(Z)\)</span>，而 <span class="arithmatex">\(Z=Wx+b\)</span>，那么：<span class="arithmatex">\(\frac{\partial h}{\partial x} = \frac{\partial h}{\partial Z} \frac{\partial Z}{\partial x}\)</span></p>
-<h5 id="反向传播">反向传播<a class="headerlink" href="#反向传播" title="Permanent link"></a></h5>
+<h5 id="_4">反向传播</h5>
 <p>首先，我们根据神经网络的公式前向建立计算图，如下所示：
 <img alt="alt text" src="../image-1.png" ></p>
 <p>然后，我们沿着前向计算的反方向传递来计算梯度：
